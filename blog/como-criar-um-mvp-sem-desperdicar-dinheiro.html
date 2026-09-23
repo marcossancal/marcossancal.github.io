@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Como criar um MVP sem desperdiçar dinheiro em funcionalidades que ninguém vai usar. Aprenda a definir o escopo mínimo, escolher a stack certa e sair do papel com o que realmente importa.">
+<title>Como criar um MVP sem desperdiçar dinheiro em funcionalidades que ninguém vai usar | Marcos Sanches</title>
+<link rel="canonical" href="https://marcossanches.dev/blog/como-criar-um-mvp-sem-desperdicar-dinheiro.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Marcos Sanches — Consultor de Tecnologia">
+<meta property="og:title" content="Como criar um MVP sem desperdiçar dinheiro em funcionalidades que ninguém vai usar">
+<meta property="og:description" content="Aprenda a definir o escopo mínimo, escolher a stack certa e sair do papel com o que realmente importa — sem estourar o orçamento.">
+<meta property="og:url" content="https://marcossanches.dev/blog/como-criar-um-mvp-sem-desperdicar-dinheiro.html">
+<meta property="article:published_time" content="2026-09-05">
+<meta property="article:modified_time" content="2026-09-05">
+<meta property="article:author" content="Marcos Sanches">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Como criar um MVP sem desperdiçar dinheiro">
+<meta name="twitter:description" content="Aprenda a definir o escopo mínimo, escolher a stack certa e sair do papel com o que realmente importa.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Como criar um MVP sem desperdiçar dinheiro em funcionalidades que ninguém vai usar",
+  "description": "Como criar um MVP sem desperdiçar dinheiro em funcionalidades que ninguém vai usar. Aprenda a definir o escopo mínimo, escolher a stack certa e sair do papel com o que realmente importa.",
+  "datePublished": "2026-09-05",
+  "dateModified": "2026-09-05",
+  "inLanguage": "pt-BR",
+  "author": {
+    "@type": "Person",
+    "@id": "https://marcossanches.dev/#marcos",
+    "name": "Marcos Sanches",
+    "url": "https://marcossanches.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://marcossanches.dev/#marcos",
+    "name": "Marcos Sanches"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://marcossanches.dev/blog/como-criar-um-mvp-sem-desperdicar-dinheiro.html"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://marcossanches.dev/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://marcossanches.dev/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "Como criar um MVP sem desperdiçar dinheiro", "item": "https://marcossanches.dev/blog/como-criar-um-mvp-sem-desperdicar-dinheiro.html" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre MVP e protótipo?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Um protótipo é uma representação visual ou interativa do produto — serve para testar a ideia e coletar feedback antes de desenvolver. Um MVP é o produto real, funcional, com as funcionalidades mínimas necessárias para ser usado por clientes de verdade. O protótipo antecede o MVP e ajuda a defini-lo. Muitos projetos pulam o protótipo e vão direto ao MVP — o que é válido quando o fundador já tem clareza sobre o que o cliente quer." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto tempo leva para desenvolver um MVP?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Depende do escopo, mas um MVP bem definido — com escopo mínimo real, não uma lista de desejos — costuma levar entre 4 e 12 semanas de desenvolvimento. MVPs que levam mais de 3 meses geralmente têm escopo que não é mínimo. Se o desenvolvimento está demorando mais do que isso, vale revisar o escopo antes de continuar investindo." }
+    },
+    {
+      "@type": "Question",
+      "name": "Devo lançar o MVP mesmo que não esteja perfeito?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim — e essa é exatamente a premissa do MVP. Se você está esperando o produto ficar perfeito para lançar, não está construindo um MVP, está construindo um produto completo. O MVP existe para coletar feedback real de usuários reais o mais rápido possível. Perfeito antes do lançamento é perfeito para o que você acha que o cliente quer — que pode ser completamente diferente do que ele realmente precisa." }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual linguagem ou tecnologia é melhor para construir um MVP?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A que o desenvolvedor domina. Velocidade de entrega é o que importa em um MVP — não a stack mais moderna. Um desenvolvedor experiente em PHP entrega um MVP funcional mais rápido e com menos bugs do que o mesmo desenvolvedor tentando usar uma tecnologia que não conhece bem. A refatoração para a stack 'ideal' pode acontecer depois, quando você souber que o produto tem tração." }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0b0b0b;--paper:#f5f4ef;--line:rgba(17,17,17,.14);--darkline:rgba(255,255,255,.14);--mono:"DM Mono",monospace}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;color:#111;background:var(--paper);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.nav{position:fixed;z-index:80;top:0;left:0;width:100%;height:82px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;color:#fff;mix-blend-mode:difference}
+.brand{display:flex;gap:10px;align-items:center}
+.brand b{font-size:20px;letter-spacing:-.08em}
+.brand small{font-family:var(--mono);font-size:9px;letter-spacing:.15em}
+.nav nav{display:flex;gap:30px}
+.nav nav a,.nav-cta{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.nav nav a{transition:opacity .25s}.nav nav a:hover{opacity:.55}
+.nav-cta{border:1px solid currentColor;border-radius:99px;padding:11px 15px}
+.crumb{max-width:760px;margin:0 auto;padding:116px 24px 0;font:400 12px var(--mono);color:#999;letter-spacing:.04em}
+.crumb a{color:#555;font-weight:500}.crumb a:hover{text-decoration:underline}
+.art-hdr{max-width:760px;margin:0 auto;padding:28px 24px 36px}
+.art-cat{display:inline-block;font:600 9px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#777;border:1px solid var(--line);border-radius:99px;padding:6px 14px;margin-bottom:20px}
+.art-hdr h1{font-size:clamp(28px,4.5vw,52px);font-weight:900;letter-spacing:-.06em;line-height:.92;color:#111;margin-bottom:20px}
+.art-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font:400 12px var(--mono);color:#999}
+.art-meta strong{color:#666;font-weight:500}
+.art-cover{max-width:900px;margin:0 auto;padding:0 24px 8px}
+.art-cover-ph{height:320px;background:var(--black);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font:500 10px var(--mono);letter-spacing:.15em;text-transform:uppercase}
+.art-body{max-width:680px;margin:0 auto;padding:52px 24px 28px;font-size:17px;line-height:1.85;color:#444}
+.art-body h2{font-size:clamp(22px,2.8vw,32px);font-weight:800;letter-spacing:-.05em;color:#111;line-height:1.2;margin:48px 0 18px}
+.art-body h3{font-size:20px;font-weight:700;letter-spacing:-.03em;color:#111;margin:32px 0 14px}
+.art-body p{margin-bottom:20px}
+.art-body ul,.art-body ol{margin:0 0 20px 24px}
+.art-body li{margin-bottom:10px}
+.art-body strong{color:#111;font-weight:600}
+.art-callout{border-left:3px solid #111;padding:18px 24px;margin:32px 0;font-size:15px;color:#555;background:#eceae4}
+.art-callout strong{color:#111}
+.art-faq{max-width:680px;margin:48px auto 0;padding:0 24px}
+.art-faq h2{font-size:22px;font-weight:800;letter-spacing:-.04em;margin-bottom:24px;color:#111}
+.faq-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.fi{border-bottom:1px solid var(--line)}
+.fq{width:100%;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font:500 15px Inter,sans-serif;color:#111;text-align:left;gap:16px}
+.fa-arr{flex-shrink:0;font:300 20px var(--mono);color:#999;transition:transform .3s}
+.fi.open .fa-arr{transform:rotate(45deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;font-size:14px;color:#666;line-height:1.75}
+.fi.open .fa{max-height:500px;padding:0 0 20px}
+.art-cta{max-width:680px;margin:52px auto 0;padding:0 24px}
+.art-cta-box{background:var(--black);padding:44px 40px;text-align:center}
+.art-cta-box h3{font-size:clamp(22px,3vw,34px);font-weight:900;letter-spacing:-.06em;color:#fff;margin-bottom:12px}
+.art-cta-box p{font-size:14px;color:#999;margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn-cta{display:inline-block;font:700 10px var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:16px 28px;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:99px;transition:background .2s,color .2s}
+.btn-cta:hover{background:#fff;color:#111}
+.art-back{max-width:680px;margin:36px auto 72px;padding:0 24px}
+.art-back a{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:#999;border-bottom:1px solid var(--line);padding-bottom:4px}
+.art-back a:hover{color:#111;border-color:#111}
+.footer{border-top:1px solid var(--darkline);padding:32px 0;background:var(--black)}
+.footer .container{width:min(1240px,calc(100% - 64px));margin:auto;display:grid;grid-template-columns:1fr auto auto;gap:30px;align-items:center}
+.footer b{display:block;color:#f5f5f2;font-size:14px}
+.footer small{display:block;color:#555;font:400 9px var(--mono);margin-top:5px}
+.footer .links{display:flex;gap:25px;font:400 9px var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.footer .links a{color:#555;transition:color .2s}.footer .links a:hover{color:#f5f5f2}
+.footer .copy{font:400 9px var(--mono);color:#333}
+@media(max-width:900px){.nav{padding:0 20px;height:70px}.nav nav{display:none}.nav-cta{padding:9px 12px;font-size:9px}.footer .container{grid-template-columns:1fr}}
+@media(max-width:600px){.nav-cta{display:none}.brand small{display:none}.crumb{padding-top:100px}.art-cover-ph{height:200px}.art-body{font-size:16px}.art-cta-box{padding:32px 24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html"><b>MS</b><small>TECNOLOGIA</small></a>
+  <nav>
+    <a href="../index.html#solucoes">Soluções</a>
+    <a href="../index.html#cases">Cases</a>
+    <a href="index.html">Blog</a>
+  </nav>
+  <a class="nav-cta" href="../index.html#contato">Falar sobre um projeto ↗</a>
+</header>
+
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="../index.html">Início</a> &nbsp;/&nbsp;
+  <a href="index.html">Blog</a> &nbsp;/&nbsp;
+  Como criar um MVP sem desperdiçar dinheiro
+</nav>
+
+<header class="art-hdr">
+  <span class="art-cat">Sistemas</span>
+  <h1>Como criar um MVP sem desperdiçar dinheiro em funcionalidades que ninguém vai usar</h1>
+  <div class="art-meta">
+    <span><strong>Marcos Sanches</strong></span>
+    <span>·</span>
+    <span>5 de setembro de 2026</span>
+    <span>·</span>
+    <span>8 min de leitura</span>
+  </div>
+</header>
+
+<div class="art-cover">
+  <div class="art-cover-ph">MVP · Produto Digital · Escopo Mínimo · Validação</div>
+</div>
+
+<article class="art-body">
+
+  <p>A maioria dos MVPs falha antes de chegar ao mercado. Não por falta de tecnologia — a tecnologia para construir qualquer coisa existe. Falha por falta de foco: o fundador quer construir tudo de uma vez, o escopo cresce, o prazo estica, o dinheiro acaba, e o produto nunca chega nas mãos de nenhum cliente real para ser testado.</p>
+
+  <p>Já construí produtos próprios do zero — o <a href="https://zapflow.sancalproducoes.com.br" target="_blank" rel="noopener">ZapFlow</a>, plataforma de automação comercial via WhatsApp, e o <a href="https://express.sancalproducoes.com.br" target="_blank" rel="noopener">Consulta RFB</a>, ferramenta de consulta da base de CNPJs da Receita Federal — e ajudei outros fundadores a tirar ideias do papel. O que aprendi nesses processos é o que está neste artigo.</p>
+
+  <h2>O que é um MVP de verdade</h2>
+
+  <p>MVP — Minimum Viable Product, ou Produto Mínimo Viável — é um produto com o conjunto mínimo de funcionalidades necessário para ser usado por clientes reais e gerar aprendizado real sobre se a ideia funciona.</p>
+
+  <p>O "mínimo" é a parte que todo mundo entende na teoria e ignora na prática. Mínimo não é "sem qualidade". Não é "feito às pressas". É <strong>o menor escopo possível que ainda entrega o valor central da ideia</strong> para o cliente.</p>
+
+  <p>Se a sua ideia é uma plataforma de agendamento online para clínicas, o MVP não precisa ter app mobile, notificações automáticas, integração com prontuário eletrônico, relatórios de faturamento e painel de marketing. Precisa ter, no mínimo: o cliente consegue ver os horários disponíveis e reservar um. O médico vê os agendamentos. Isso é o núcleo — todo o resto é evolução.</p>
+
+  <h2>Por que os MVPs ficam grandes demais</h2>
+
+  <p>Existem três razões principais pelas quais o escopo de um MVP cresce além do necessário:</p>
+
+  <h3>1. Confusão entre o que você quer e o que o cliente precisa</h3>
+
+  <p>Fundadores tendem a querer construir o produto que eles próprios gostariam de usar — completo, polido, com todas as funcionalidades imaginadas. O problema é que você ainda não sabe o que o cliente quer. O MVP existe exatamente para descobrir isso. Construir tudo antes de ter esse aprendizado é apostar alto em uma hipótese não testada.</p>
+
+  <h3>2. Medo de lançar algo "incompleto"</h3>
+
+  <p>Existe um desconforto real em mostrar um produto que ainda não tem tudo. Mas se você não sente um pouco de vergonha do seu MVP, é porque esperou tempo demais para lançar — essa frase, atribuída ao Reid Hoffman, fundador do LinkedIn, resume bem a lógica.</p>
+
+  <p>Um produto incompleto nas mãos de 10 clientes reais gera mais aprendizado do que um produto completo que nunca saiu do papel.</p>
+
+  <h3>3. O desenvolvedor aceita tudo sem questionar o escopo</h3>
+
+  <p>Um desenvolvedor que só executa o que o cliente pede está prestando um desserviço. Parte do trabalho de construir um MVP com responsabilidade é questionar o escopo: isso é realmente necessário para validar a ideia? Isso pode ser adicionado depois? Isso vai ser usado por alguém nos primeiros 30 dias?</p>
+
+  <p>É uma conversa que pode ser incômoda — mas que salva tempo e dinheiro.</p>
+
+  <h2>Como definir o escopo mínimo na prática</h2>
+
+  <p>O exercício que mais funciona é simples: escreva em uma frase o que o seu produto faz pelo cliente. Uma frase, sem "e também" no meio.</p>
+
+  <p>Se você não consegue escrever isso em uma frase, o produto está tentando fazer coisas demais. Se você consegue, tudo que não está nessa frase é candidato a sair do escopo do MVP.</p>
+
+  <p>Depois disso, para cada funcionalidade que você quer incluir, faça três perguntas:</p>
+
+  <ol>
+    <li><strong>Sem isso, o produto consegue entregar o valor central?</strong> Se sim, pode sair.</li>
+    <li><strong>Isso é necessário para o primeiro cliente pagar?</strong> Se não, pode sair.</li>
+    <li><strong>Isso pode ser adicionado em 2 semanas depois do lançamento?</strong> Se sim, pode sair.</li>
+  </ol>
+
+  <p>O que sobrar depois dessas três perguntas é o seu MVP.</p>
+
+  <h2>Escolha da tecnologia: velocidade acima de elegância</h2>
+
+  <p>Para um MVP, a pergunta não é "qual é a melhor tecnologia". A pergunta é "qual tecnologia nos permite chegar no mercado mais rápido com o menor custo e o menor risco".</p>
+
+  <p>Isso quase sempre significa usar o que o desenvolvedor já domina. Um desenvolvedor experiente em PHP entrega um MVP funcional, seguro e escalável mais rápido do que o mesmo desenvolvedor tentando usar uma stack que não conhece bem — mesmo que essa stack seja "mais moderna".</p>
+
+  <p>Os produtos que construí usam PHP, MySQL, JavaScript e Python — tecnologias que domino depois de mais de 14 anos. Não são as mais em alta no momento, mas são robustas, bem documentadas, têm ecossistema enorme e me permitem construir e iterar rápido. O ZapFlow e o Consulta RFB foram construídos assim — e estão em produção, sendo usados, gerando receita.</p>
+
+  <div class="art-callout">
+    <strong>A stack perfeita para um MVP que nunca é lançado vale zero.</strong> A stack "boa o suficiente" de um produto que chega nas mãos de clientes reais em 6 semanas vale muito mais.
+  </div>
+
+  <h2>O que precisa estar certo desde o início — mesmo no MVP</h2>
+
+  <p>Minimalismo no escopo não significa descuido técnico. Algumas coisas precisam estar corretas desde o primeiro dia, independente do tamanho do MVP:</p>
+
+  <ul>
+    <li><strong>Segurança básica:</strong> autenticação correta, proteção contra SQL injection, HTTPS obrigatório, senhas com hash. Esses não são "detalhes para depois" — são fundação.</li>
+    <li><strong>Banco de dados com estrutura pensada:</strong> uma estrutura de banco de dados mal planejada desde o início vai custar caro para refatorar quando o produto crescer. Vale investir tempo nisso antes de escrever qualquer código de funcionalidade.</li>
+    <li><strong>Logs e monitoramento mínimo:</strong> você precisa saber quando algo quebra — preferencialmente antes do cliente reclamar. Um sistema de log simples e uma notificação de erro por e-mail já resolvem isso no MVP.</li>
+    <li><strong>Código que outra pessoa consegue entender:</strong> se o desenvolvedor do MVP for embora amanhã, outra pessoa precisa conseguir dar continuidade. Código sem comentário, sem estrutura e sem documentação mínima é um passivo.</li>
+  </ul>
+
+  <h2>Lançar, medir, iterar — na ordem certa</h2>
+
+  <p>MVP não é o produto final. É a primeira versão de um processo de aprendizado. O que importa depois do lançamento é observar como os clientes reais usam — não como você imaginou que usariam.</p>
+
+  <p>As perguntas que guiam a iteração:</p>
+
+  <ul>
+    <li>As pessoas estão chegando no produto e desistindo antes de completar o fluxo principal? Onde?</li>
+    <li>Qual funcionalidade os primeiros clientes mais usam? Qual eles ignoram?</li>
+    <li>O que os clientes pedem que não existe? Esse pedido se repete?</li>
+    <li>Alguém pagou? Se não, por quê? Se sim, por qual motivo?</li>
+  </ul>
+
+  <p>As respostas a essas perguntas definem o que vai para a próxima versão — não a lista de funcionalidades que você escreveu antes de lançar.</p>
+
+  <h2>Quando faz sentido me envolver no seu MVP</h2>
+
+  <p>Trabalho melhor com fundadores que têm um problema claro que querem resolver — e disposição para lançar cedo e iterar. Não funciono bem com quem quer construir tudo de uma vez antes de mostrar para alguém.</p>
+
+  <p>O processo que uso: entendo o problema e o público, questiono o escopo até chegar no mínimo real, defino a arquitetura técnica, construo e entrego em ciclos curtos. O primeiro ciclo tem que resultar em algo que pode ser mostrado para um cliente real. Se não resultar, o escopo ainda está grande.</p>
+
+  <p>Os projetos que tenho mais orgulho são os que saíram do papel rápido, chegaram nas mãos de clientes reais, e evoluíram a partir do feedback deles — não a partir de suposições feitas em uma sala de reunião.</p>
+
+</article>
+
+<section class="art-faq">
+  <h2>Perguntas frequentes</h2>
+  <div class="faq-list">
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Qual a diferença entre MVP e protótipo? <span class="fa-arr">+</span></button>
+      <div class="fa">Um protótipo é uma representação visual ou interativa do produto — serve para testar a ideia e coletar feedback antes de desenvolver. Um MVP é o produto real, funcional, com as funcionalidades mínimas necessárias para ser usado por clientes de verdade. O protótipo antecede o MVP e ajuda a defini-lo. Muitos projetos pulam o protótipo e vão direto ao MVP — o que é válido quando o fundador já tem clareza sobre o que o cliente quer.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Quanto tempo leva para desenvolver um MVP? <span class="fa-arr">+</span></button>
+      <div class="fa">Depende do escopo, mas um MVP bem definido — com escopo mínimo real, não uma lista de desejos — costuma levar entre 4 e 12 semanas de desenvolvimento. MVPs que levam mais de 3 meses geralmente têm escopo que não é mínimo. Se o desenvolvimento está demorando mais do que isso, vale revisar o escopo antes de continuar investindo.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Devo lançar o MVP mesmo que não esteja perfeito? <span class="fa-arr">+</span></button>
+      <div class="fa">Sim — e essa é exatamente a premissa do MVP. Se você está esperando o produto ficar perfeito para lançar, não está construindo um MVP, está construindo um produto completo. O MVP existe para coletar feedback real de usuários reais o mais rápido possível. Perfeito antes do lançamento é perfeito para o que você acha que o cliente quer — que pode ser completamente diferente do que ele realmente precisa.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Qual linguagem ou tecnologia é melhor para construir um MVP? <span class="fa-arr">+</span></button>
+      <div class="fa">A que o desenvolvedor domina. Velocidade de entrega é o que importa em um MVP — não a stack mais moderna. Um desenvolvedor experiente em PHP entrega um MVP funcional mais rápido e com menos bugs do que o mesmo desenvolvedor tentando usar uma tecnologia que não conhece bem. A refatoração para a stack "ideal" pode acontecer depois, quando você souber que o produto tem tração.</div>
+    </div>
+  </div>
+</section>
+
+<div class="art-cta">
+  <div class="art-cta-box">
+    <h3>Tem uma ideia que quer tirar do papel?</h3>
+    <p>Me conta o problema que você quer resolver e quem vai usar. Com isso já consigo te dizer o que faz sentido construir primeiro — e o que pode esperar.</p>
+    <a href="mailto:contato@marcossanches.dev" class="btn-cta">Enviar um projeto ↗</a>
+  </div>
+</div>
+
+<div class="art-back">
+  <a href="index.html">← Voltar para o blog</a>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div>
+      <b>Marcos Sanches</b>
+      <small>Consultor de Tecnologia & Desenvolvedor · Guarulhos/SP</small>
+    </div>
+    <div class="links">
+      <a href="index.html">Blog</a>
+      <a href="../index.html#contato">Contato</a>
+    </div>
+    <small class="copy">© 2026</small>
+  </div>
+</footer>
+
+<script>
+function faq(btn){var i=btn.closest('.fi'),o=i.classList.contains('open');document.querySelectorAll('.fi').forEach(function(x){x.classList.remove('open')});if(!o)i.classList.add('open');}
+</script>
+</body>
+</html>

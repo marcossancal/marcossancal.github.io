@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "slug": "como-automatizar-processos-empresariais-sem-contratar-mais",
+      "title": "Como automatizar processos da sua empresa sem contratar mais ninguém",
+      "excerpt": "A maioria das empresas que me procura tem um problema em comum: processos manuais que consomem tempo, geram erros e dependem de pessoas específicas para funcionar. Neste artigo explico como identificar o que automatizar primeiro — e o que isso muda na prática.",
+      "date": "2026-09-23",
+      "author": "Marcos Sanches",
+      "category": "Automação",
+      "image": "",
+      "readingTime": 7
+    },
+    {
+      "slug": "integracao-de-sistemas-o-que-e-quando-preciso",
+      "title": "Integração de sistemas: o que é, quando você precisa e por onde começar",
+      "excerpt": "Sistemas que não conversam entre si são um dos maiores geradores de retrabalho em empresas de médio porte. Veja como funciona uma integração na prática — e como avaliar se vale a pena no seu caso.",
+      "date": "2026-09-10",
+      "author": "Marcos Sanches",
+      "category": "Integrações",
+      "image": "",
+      "readingTime": 6
+    },
+    {
+      "slug": "ia-aplicada-nos-negocios-o-que-funciona-de-verdade",
+      "title": "IA aplicada nos negócios: o que funciona de verdade (e o que é só hype)",
+      "excerpt": "Todo mundo fala de Inteligência Artificial, mas poucas empresas sabem o que dá resultado real. Aqui mostro os casos de uso que efetivamente economizam tempo e os que ainda não saíram do papel.",
+      "date": "2026-08-28",
+      "author": "Marcos Sanches",
+      "category": "IA Aplicada",
+      "image": "",
+      "readingTime": 8
+    }
+  ]
+}

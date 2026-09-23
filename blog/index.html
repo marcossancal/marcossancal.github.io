@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Blog de Marcos Sanches — consultor de tecnologia e desenvolvedor de sistemas em Guarulhos/SP. Artigos sobre automação, integrações, IA aplicada, desenvolvimento de sistemas e transformação digital para empresas.">
+<title>Blog — Tecnologia, Automação e Desenvolvimento de Sistemas | Marcos Sanches</title>
+<link rel="canonical" href="https://marcossanches.dev/blog/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Marcos Sanches — Consultor de Tecnologia">
+<meta property="og:title" content="Blog — Tecnologia, Automação e Desenvolvimento de Sistemas | Marcos Sanches">
+<meta property="og:description" content="Artigos sobre automação de processos, integrações de sistemas, IA aplicada e desenvolvimento de software — escritos por Marcos Sanches, consultor de tecnologia em Guarulhos/SP.">
+<meta property="og:url" content="https://marcossanches.dev/blog/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Blog — Tecnologia e Desenvolvimento | Marcos Sanches">
+<meta name="twitter:description" content="Artigos sobre automação, sistemas, IA e desenvolvimento — Marcos Sanches, consultor de tecnologia em Guarulhos/SP.">
+
+<!-- Schema: Blog + Person + LocalBusiness -->
+<script type="application/ld+json" id="blogJsonLd">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "name": "Blog — Marcos Sanches Tecnologia",
+      "description": "Conteúdo técnico e prático sobre automação de processos, integração de sistemas, IA aplicada, desenvolvimento web e transformação digital para empresas.",
+      "url": "https://marcossanches.dev/blog/",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://marcossanches.dev/#marcos",
+        "name": "Marcos Sanches",
+        "jobTitle": "Consultor de Tecnologia e Desenvolvedor de Sistemas",
+        "url": "https://marcossanches.dev",
+        "sameAs": ["https://sancalproducoes.com.br"]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://marcossanches.dev/#marcos",
+      "name": "Marcos Sanches",
+      "jobTitle": "Consultor de Tecnologia e Desenvolvedor de Sistemas",
+      "description": "Consultor de tecnologia e desenvolvedor de sistemas baseado em Guarulhos/SP, com 14 anos de experiência em automação, integrações, IA aplicada e desenvolvimento de plataformas.",
+      "url": "https://marcossanches.dev",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "SanCal Produções",
+        "url": "https://sancalproducoes.com.br"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Guarulhos",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "name": "Marcos Sanches — Consultoria e Desenvolvimento de Sistemas",
+      "url": "https://marcossanches.dev",
+      "description": "Consultoria de tecnologia, desenvolvimento de sistemas sob medida, automação de processos e integrações de APIs para empresas em Guarulhos e todo o Brasil.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Guarulhos",
+        "addressRegion": "SP",
+        "addressCountry": "BR"
+      },
+      "areaServed": "BR",
+      "priceRange": "$$"
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#0b0b0b;--paper:#f5f4ef;--line:rgba(17,17,17,.14);--darkline:rgba(255,255,255,.14);
+  --mono:"DM Mono",monospace;--ease:cubic-bezier(.22,.61,.36,1);--r:4px;
+}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;color:#111;background:var(--paper);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.dark{background:var(--black);color:#f5f5f2}
+.light{background:var(--paper);color:#111}
+.container{width:min(1240px,calc(100% - 64px));margin:auto}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* NAV */
+.nav{position:fixed;z-index:80;top:0;left:0;width:100%;height:82px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;color:#fff;mix-blend-mode:difference}
+.brand{display:flex;gap:10px;align-items:center}
+.brand b{font-size:20px;letter-spacing:-.08em}
+.brand small,.nav a,.label,.note{font-family:var(--mono)}
+.brand small{font-size:9px;letter-spacing:.15em}
+.nav nav{display:flex;gap:30px}
+.nav nav a,.nav-cta{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.nav nav a{transition:opacity .25s}
+.nav nav a:hover{opacity:.55}
+.nav-cta{border:1px solid currentColor;border-radius:99px;padding:11px 15px}
+
+/* HERO DO BLOG */
+.blog-hero{position:relative;min-height:72vh;display:flex;align-items:flex-end;padding:140px 5vw 80px;background:var(--black);overflow:hidden}
+.blog-hero-grid{width:min(1240px,100%);margin:auto;display:grid;grid-template-columns:1.2fr .8fr;gap:6vw;align-items:end}
+.blog-eyebrow{font:500 10px/1.4 var(--mono);letter-spacing:.11em;color:#aaa;text-transform:uppercase;margin-bottom:24px}
+.blog-hero h1{font-size:clamp(38px,5.5vw,80px);line-height:.9;letter-spacing:-.065em;font-weight:900;color:#fff;margin-bottom:28px}
+.blog-hero h1 em{font-style:normal;font-weight:400}
+.blog-hero-copy{padding-bottom:6px}
+.blog-hero-copy p{font-size:15px;color:#999;line-height:1.8;max-width:420px;margin-bottom:20px}
+.blog-hero-copy p strong{color:#ddd;font-weight:600}
+.blog-hero-copy .topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.blog-hero-copy .topics span{font:500 9px var(--mono);border:1px solid rgba(255,255,255,.16);border-radius:99px;padding:8px 14px;color:#bbb}
+.blog-hero-bottom{position:absolute;left:5vw;right:5vw;bottom:28px;display:flex;justify-content:space-between;font:500 9px/1 var(--mono);color:#555;letter-spacing:.08em}
+
+/* BREADCRUMB */
+.crumb{max-width:min(1240px,calc(100% - 64px));margin:32px auto 0;font:400 13px var(--mono);color:#777;letter-spacing:.04em}
+.crumb a{color:#111;font-weight:500}
+.crumb a:hover{text-decoration:underline}
+
+/* SEÇÃO DE POSTS */
+.posts-sec{padding:48px 0 120px}
+.posts-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;border-bottom:1px solid var(--line);padding-bottom:20px}
+.posts-header .label{font:500 10px var(--mono);letter-spacing:.11em;color:#999;text-transform:uppercase}
+.posts-header .count{font:400 10px var(--mono);color:#bbb}
+
+/* GRID DE CARDS */
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1px;border:1px solid var(--line)}
+.pcard{display:flex;flex-direction:column;background:var(--paper);padding:32px;border:none;transition:background .2s}
+.pcard:hover{background:#eceae4}
+.pcard-cat{font:600 9px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#777;margin-bottom:14px}
+.pcard-body h3{font-size:clamp(19px,2vw,26px);font-weight:800;line-height:1.15;letter-spacing:-.04em;color:#111;margin-bottom:12px}
+.pcard-body p{font-size:14px;color:#666;line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;flex:1;margin-bottom:20px}
+.pcard-meta{font:400 11px var(--mono);color:#999;margin-top:auto}
+.pcard-read{display:block;font:600 10px var(--mono);color:#111;letter-spacing:.04em;margin-top:12px;text-transform:uppercase}
+.pcard-read::after{content:" →"}
+
+.blog-empty,.blog-error{grid-column:1/-1;padding:64px 32px;font:400 14px var(--mono);color:#777;text-align:center}
+
+/* PAGINAÇÃO */
+.pagination{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin-top:48px}
+.pg-btn{font:500 10px var(--mono);padding:10px 16px;border:1px solid var(--line);background:var(--paper);color:#111;cursor:pointer;letter-spacing:.04em;transition:background .15s,color .15s}
+.pg-btn:hover:not(:disabled){background:#111;color:#fff}
+.pg-btn:disabled{opacity:.3;cursor:not-allowed}
+.pg-btn.active{background:#111;color:#fff;border-color:#111}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--darkline);padding:32px 0;background:var(--black)}
+.footer-in{display:grid;grid-template-columns:1fr auto auto;gap:30px;align-items:center}
+.footer b{display:block;color:#f5f5f2;font-size:14px}
+.footer small{display:block;color:#555;font:400 9px var(--mono);margin-top:5px}
+.footer-in>div:nth-child(2){display:flex;gap:25px;font:400 9px var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.footer-in>div:nth-child(2) a{color:#555;transition:color .2s}
+.footer-in>div:nth-child(2) a:hover{color:#f5f5f2}
+.footer .copy{font:400 9px var(--mono);color:#333}
+
+/* RESPONSIVO */
+@media(max-width:900px){
+  .nav{padding:0 20px;height:70px}
+  .nav nav{display:none}
+  .nav-cta{padding:9px 12px}
+  .blog-hero{padding:120px 24px 70px;min-height:auto}
+  .blog-hero-grid{grid-template-columns:1fr;gap:32px}
+  .blog-hero-bottom{left:24px;right:24px}
+  .blog-hero-bottom span:nth-child(2){display:none}
+  .crumb{width:calc(100% - 48px)}
+  .posts-grid{grid-template-columns:1fr}
+  .footer-in{grid-template-columns:1fr}
+  .footer-in>div:nth-child(2){order:3}
+}
+@media(max-width:600px){
+  .nav-cta{display:none}
+  .brand small{display:none}
+  .blog-hero h1{font-size:10vw}
+  .posts-sec{padding:32px 0 80px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <a class="brand" href="../index.html"><b>MS</b><small>TECNOLOGIA</small></a>
+  <nav>
+    <a href="../index.html#solucoes">Soluções</a>
+    <a href="../index.html#cases">Cases</a>
+    <a href="../index.html#sobre">Sobre</a>
+    <a href="index.html" style="opacity:.5">Blog</a>
+  </nav>
+  <a class="nav-cta" href="../index.html#contato">Falar sobre um projeto ↗</a>
+</header>
+
+<!-- HERO DO BLOG -->
+<section class="blog-hero" id="blogTop">
+  <div class="blog-hero-grid">
+    <div>
+      <p class="blog-eyebrow">Blog · Marcos Sanches Tecnologia</p>
+      <h1>TECNOLOGIA<br><em>que resolve</em><br>PROBLEMAS<br><em>de verdade.</em></h1>
+    </div>
+    <div class="blog-hero-copy">
+      <p>Aqui eu escrevo sobre o que funciona na prática: <strong>automação de processos</strong>, <strong>integração de sistemas</strong>, <strong>IA aplicada</strong> e <strong>desenvolvimento de plataformas</strong> — sem teoria vazia, sem hype.</p>
+      <p>Cada artigo parte de um problema real que eu ou meus clientes já enfrentamos. Se você gere uma operação e sente que a tecnologia poderia fazer mais pelo seu negócio, este blog é para você.</p>
+      <p>Atendo empresas em <strong>Guarulhos, São Paulo</strong> e em todo o Brasil de forma remota.</p>
+      <div class="topics">
+        <span>Automação</span>
+        <span>Integrações</span>
+        <span>IA Aplicada</span>
+        <span>Sistemas</span>
+        <span>n8n</span>
+        <span>PHP · Python · JS</span>
+        <span>APIs</span>
+        <span>WhatsApp</span>
+      </div>
+    </div>
+  </div>
+  <div class="blog-hero-bottom">
+    <span>GUARULHOS · SP · BRASIL</span>
+    <span>ATENDIMENTO REMOTO</span>
+    <span>↓ ARTIGOS</span>
+  </div>
+</section>
+
+<!-- BREADCRUMB -->
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="../index.html">Início</a> &nbsp;/&nbsp; Blog
+</nav>
+
+<!-- GRID DE POSTS -->
+<section class="posts-sec">
+  <div class="container">
+    <div class="posts-header">
+      <span class="label">Artigos</span>
+      <span class="count" id="postCount"></span>
+    </div>
+    <div id="postsGrid" class="posts-grid">
+      <p class="blog-empty">Carregando artigos...</p>
+    </div>
+    <div id="pagination" class="pagination"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer dark">
+  <div class="container footer-in">
+    <div>
+      <b>Marcos Sanches</b>
+      <small>Consultor de Tecnologia & Desenvolvedor · Guarulhos/SP</small>
+    </div>
+    <div>
+      <a href="../index.html#solucoes">Soluções</a>
+      <a href="../index.html#cases">Cases</a>
+      <a href="../index.html#contato">Contato</a>
+    </div>
+    <small class="copy">© 2026</small>
+  </div>
+</footer>
+
+<script>
+const PER_PAGE = 9;
+let allPosts = [];
+let currentPage = 1;
+
+function escapeHtml(str){
+  return (str||'').replace(/[&<>"']/g,function(s){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[s]});
+}
+function formatDate(iso){
+  var d=new Date(iso+'T00:00:00');
+  return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'long',year:'numeric'});
+}
+function postCardHtml(p){
+  var meta=formatDate(p.date)+(p.readingTime?' · '+p.readingTime+' min':'');
+  return '<a class="pcard" href="'+encodeURIComponent(p.slug)+'.html">'+
+    '<div class="pcard-body">'+
+      '<span class="pcard-cat">'+escapeHtml(p.category||'')+'</span>'+
+      '<h3>'+escapeHtml(p.title)+'</h3>'+
+      '<p>'+escapeHtml(p.excerpt||'')+'</p>'+
+      '<div class="pcard-meta">'+meta+'</div>'+
+      '<span class="pcard-read">Ler artigo</span>'+
+    '</div>'+
+  '</a>';
+}
+function renderPagination(total){
+  var el=document.getElementById('pagination');
+  if(total<=1){el.innerHTML='';return;}
+  var h='<button class="pg-btn"'+(currentPage===1?' disabled':'')+' onclick="renderPage('+(currentPage-1)+')">← Anterior</button>';
+  for(var i=1;i<=total;i++){h+='<button class="pg-btn'+(i===currentPage?' active':'')+'" onclick="renderPage('+i+')">'+i+'</button>';}
+  h+='<button class="pg-btn"'+(currentPage===total?' disabled':'')+' onclick="renderPage('+(currentPage+1)+')">Próximo →</button>';
+  el.innerHTML=h;
+}
+function renderPage(page){
+  var total=Math.max(1,Math.ceil(allPosts.length/PER_PAGE));
+  page=Math.min(Math.max(1,page),total);
+  currentPage=page;
+  var start=(page-1)*PER_PAGE;
+  var pagePosts=allPosts.slice(start,start+PER_PAGE);
+  var grid=document.getElementById('postsGrid');
+  grid.innerHTML=allPosts.length===0?'<p class="blog-empty">Nenhum artigo publicado ainda.</p>':pagePosts.map(postCardHtml).join('');
+  renderPagination(total);
+  if(page!==1){var t=document.getElementById('blogTop');if(t)window.scrollTo({top:t.offsetTop,behavior:'smooth'});}
+}
+function updateJsonLd(){
+  try{
+    var sc=document.getElementById('blogJsonLd');
+    var data=JSON.parse(sc.textContent);
+    data['@graph'][0].blogPost=allPosts.map(function(p){
+      return{"@type":"BlogPosting","headline":p.title,"url":"https://marcossanches.dev/blog/"+encodeURIComponent(p.slug)+".html","datePublished":p.date,"author":{"@type":"Person","name":"Marcos Sanches"}};
+    });
+    sc.textContent=JSON.stringify(data);
+  }catch(e){console.error('JSON-LD update error:',e);}
+}
+fetch('posts.json')
+  .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+  .then(function(data){
+    allPosts=(data.posts||[]).slice().sort(function(a,b){return new Date(b.date)-new Date(a.date);});
+    var cnt=document.getElementById('postCount');
+    if(cnt)cnt.textContent=allPosts.length+' artigo'+(allPosts.length!==1?'s':'');
+    updateJsonLd();
+    renderPage(1);
+  })
+  .catch(function(err){
+    console.error('Erro posts.json:',err);
+    document.getElementById('postsGrid').innerHTML='<p class="blog-error">Não foi possível carregar os artigos. Se estiver abrindo pelo file://, suba para um servidor para testar.</p>';
+  });
+</script>
+</body>
+</html>

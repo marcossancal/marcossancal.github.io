@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="n8n é uma das ferramentas de automação mais poderosas disponíveis hoje — e ainda pouco explorada no Brasil. Veja o que é, como funciona e quando faz sentido usar na sua empresa.">
+<title>n8n: o que é e como usar para automatizar processos da sua empresa | Marcos Sanches</title>
+<link rel="canonical" href="https://marcossanches.dev/blog/n8n-o-que-e-como-usar-para-automatizar-sua-empresa.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Marcos Sanches — Consultor de Tecnologia">
+<meta property="og:title" content="n8n: o que é e como usar para automatizar processos da sua empresa">
+<meta property="og:description" content="n8n é uma das ferramentas de automação mais poderosas disponíveis hoje — e ainda pouco explorada no Brasil. Veja o que é, como funciona e quando faz sentido usar.">
+<meta property="og:url" content="https://marcossanches.dev/blog/n8n-o-que-e-como-usar-para-automatizar-sua-empresa.html">
+<meta property="article:published_time" content="2026-09-18">
+<meta property="article:modified_time" content="2026-09-18">
+<meta property="article:author" content="Marcos Sanches">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="n8n: o que é e como usar para automatizar processos da sua empresa">
+<meta name="twitter:description" content="n8n é uma das ferramentas de automação mais poderosas disponíveis hoje — e ainda pouco explorada no Brasil.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "n8n: o que é e como usar para automatizar processos da sua empresa",
+  "description": "n8n é uma das ferramentas de automação mais poderosas disponíveis hoje — e ainda pouco explorada no Brasil. Veja o que é, como funciona e quando faz sentido usar na sua empresa.",
+  "datePublished": "2026-09-18",
+  "dateModified": "2026-09-18",
+  "inLanguage": "pt-BR",
+  "author": {
+    "@type": "Person",
+    "@id": "https://marcossanches.dev/#marcos",
+    "name": "Marcos Sanches",
+    "url": "https://marcossanches.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://marcossanches.dev/#marcos",
+    "name": "Marcos Sanches"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://marcossanches.dev/blog/n8n-o-que-e-como-usar-para-automatizar-sua-empresa.html"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://marcossanches.dev/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://marcossanches.dev/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "n8n: o que é e como usar", "item": "https://marcossanches.dev/blog/n8n-o-que-e-como-usar-para-automatizar-sua-empresa.html" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "n8n é gratuito?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim, o n8n tem uma versão open source gratuita que você pode hospedar no seu próprio servidor. Existe também uma versão cloud paga (n8n.cloud) com planos mensais. Para empresas que querem controle total dos dados e custo fixo previsível, a auto-hospedagem em um VPS é geralmente a melhor opção — e o custo é só o do servidor, que pode ser menos de R$ 100/mês." }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual a diferença entre n8n, Zapier e Make (antigo Integromat)?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Zapier e Make são SaaS com planos baseados em número de execuções — você paga conforme usa e os dados passam pelos servidores deles. O n8n pode ser auto-hospedado, o que significa custo fixo e dados no seu controle. Além disso, o n8n permite lógica muito mais complexa: loops, transformações de dados, chamadas a código Python ou JavaScript diretamente no fluxo, e integrações com qualquer API, mesmo sem conector pronto." }
+    },
+    {
+      "@type": "Question",
+      "name": "Preciso saber programar para usar o n8n?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Para fluxos simples, não — a interface visual já resolve bastante coisa. Para fluxos mais complexos, com transformações de dados, condicionais avançadas ou chamadas a APIs sem conector pronto, algum conhecimento de JavaScript ou lógica de programação ajuda muito. É por isso que faz sentido envolver um desenvolvedor na estruturação inicial dos fluxos mais críticos." }
+    },
+    {
+      "@type": "Question",
+      "name": "O n8n funciona com WhatsApp?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim. O n8n se integra com a API oficial do WhatsApp Business e também com soluções como Evolution API para números convencionais. Isso permite automatizar envio de mensagens, respostas automáticas, notificações de pedidos, confirmações de agendamento e muito mais — tudo integrado com outros sistemas da operação." }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0b0b0b;--paper:#f5f4ef;--line:rgba(17,17,17,.14);--darkline:rgba(255,255,255,.14);--mono:"DM Mono",monospace}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;color:#111;background:var(--paper);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.nav{position:fixed;z-index:80;top:0;left:0;width:100%;height:82px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;color:#fff;mix-blend-mode:difference}
+.brand{display:flex;gap:10px;align-items:center}
+.brand b{font-size:20px;letter-spacing:-.08em}
+.brand small{font-family:var(--mono);font-size:9px;letter-spacing:.15em}
+.nav nav{display:flex;gap:30px}
+.nav nav a,.nav-cta{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.nav nav a{transition:opacity .25s}.nav nav a:hover{opacity:.55}
+.nav-cta{border:1px solid currentColor;border-radius:99px;padding:11px 15px}
+.crumb{max-width:760px;margin:0 auto;padding:116px 24px 0;font:400 12px var(--mono);color:#999;letter-spacing:.04em}
+.crumb a{color:#555;font-weight:500}.crumb a:hover{text-decoration:underline}
+.art-hdr{max-width:760px;margin:0 auto;padding:28px 24px 36px}
+.art-cat{display:inline-block;font:600 9px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#777;border:1px solid var(--line);border-radius:99px;padding:6px 14px;margin-bottom:20px}
+.art-hdr h1{font-size:clamp(28px,4.5vw,52px);font-weight:900;letter-spacing:-.06em;line-height:.92;color:#111;margin-bottom:20px}
+.art-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font:400 12px var(--mono);color:#999}
+.art-meta strong{color:#666;font-weight:500}
+.art-cover{max-width:900px;margin:0 auto;padding:0 24px 8px}
+.art-cover-ph{height:320px;background:var(--black);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font:500 10px var(--mono);letter-spacing:.15em;text-transform:uppercase}
+.art-body{max-width:680px;margin:0 auto;padding:52px 24px 28px;font-size:17px;line-height:1.85;color:#444}
+.art-body h2{font-size:clamp(22px,2.8vw,32px);font-weight:800;letter-spacing:-.05em;color:#111;line-height:1.2;margin:48px 0 18px}
+.art-body h3{font-size:20px;font-weight:700;letter-spacing:-.03em;color:#111;margin:32px 0 14px}
+.art-body p{margin-bottom:20px}
+.art-body ul,.art-body ol{margin:0 0 20px 24px}
+.art-body li{margin-bottom:10px}
+.art-body strong{color:#111;font-weight:600}
+.art-body code{font-family:var(--mono);font-size:13px;background:#eceae4;padding:2px 6px;border-radius:2px}
+.art-callout{border-left:3px solid #111;padding:18px 24px;margin:32px 0;font-size:15px;color:#555;background:#eceae4}
+.art-callout strong{color:#111}
+.art-faq{max-width:680px;margin:48px auto 0;padding:0 24px}
+.art-faq h2{font-size:22px;font-weight:800;letter-spacing:-.04em;margin-bottom:24px;color:#111}
+.faq-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.fi{border-bottom:1px solid var(--line)}
+.fq{width:100%;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font:500 15px Inter,sans-serif;color:#111;text-align:left;gap:16px}
+.fa-arr{flex-shrink:0;font:300 20px var(--mono);color:#999;transition:transform .3s}
+.fi.open .fa-arr{transform:rotate(45deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;font-size:14px;color:#666;line-height:1.75}
+.fi.open .fa{max-height:500px;padding:0 0 20px}
+.art-cta{max-width:680px;margin:52px auto 0;padding:0 24px}
+.art-cta-box{background:var(--black);padding:44px 40px;text-align:center}
+.art-cta-box h3{font-size:clamp(22px,3vw,34px);font-weight:900;letter-spacing:-.06em;color:#fff;margin-bottom:12px}
+.art-cta-box p{font-size:14px;color:#999;margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn-cta{display:inline-block;font:700 10px var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:16px 28px;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:99px;transition:background .2s,color .2s}
+.btn-cta:hover{background:#fff;color:#111}
+.art-back{max-width:680px;margin:36px auto 72px;padding:0 24px}
+.art-back a{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:#999;border-bottom:1px solid var(--line);padding-bottom:4px}
+.art-back a:hover{color:#111;border-color:#111}
+.footer{border-top:1px solid var(--darkline);padding:32px 0;background:var(--black)}
+.footer .container{width:min(1240px,calc(100% - 64px));margin:auto;display:grid;grid-template-columns:1fr auto auto;gap:30px;align-items:center}
+.footer b{display:block;color:#f5f5f2;font-size:14px}
+.footer small{display:block;color:#555;font:400 9px var(--mono);margin-top:5px}
+.footer .links{display:flex;gap:25px;font:400 9px var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.footer .links a{color:#555;transition:color .2s}.footer .links a:hover{color:#f5f5f2}
+.footer .copy{font:400 9px var(--mono);color:#333}
+@media(max-width:900px){.nav{padding:0 20px;height:70px}.nav nav{display:none}.nav-cta{padding:9px 12px;font-size:9px}.footer .container{grid-template-columns:1fr}}
+@media(max-width:600px){.nav-cta{display:none}.brand small{display:none}.crumb{padding-top:100px}.art-cover-ph{height:200px}.art-body{font-size:16px}.art-cta-box{padding:32px 24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html"><b>MS</b><small>TECNOLOGIA</small></a>
+  <nav>
+    <a href="../index.html#solucoes">Soluções</a>
+    <a href="../index.html#cases">Cases</a>
+    <a href="index.html">Blog</a>
+  </nav>
+  <a class="nav-cta" href="../index.html#contato">Falar sobre um projeto ↗</a>
+</header>
+
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="../index.html">Início</a> &nbsp;/&nbsp;
+  <a href="index.html">Blog</a> &nbsp;/&nbsp;
+  n8n: o que é e como usar
+</nav>
+
+<header class="art-hdr">
+  <span class="art-cat">Automação</span>
+  <h1>n8n: o que é e como usar para automatizar processos da sua empresa</h1>
+  <div class="art-meta">
+    <span><strong>Marcos Sanches</strong></span>
+    <span>·</span>
+    <span>18 de setembro de 2026</span>
+    <span>·</span>
+    <span>7 min de leitura</span>
+  </div>
+</header>
+
+<div class="art-cover">
+  <div class="art-cover-ph">n8n · Automação de Processos · Integrações · Fluxos</div>
+</div>
+
+<article class="art-body">
+
+  <p>Se você já pesquisou sobre automação de processos, provavelmente encontrou Zapier e Make. São boas ferramentas. Mas existe uma alternativa que uso com muito mais frequência nos projetos dos meus clientes — e que ainda é surpreendentemente pouco conhecida no Brasil: o <strong>n8n</strong>.</p>
+
+  <p>Neste artigo explico o que é, como funciona na prática, quando faz sentido usar e por que ele acabou se tornando minha ferramenta preferida para automatizar processos em empresas de médio porte.</p>
+
+  <h2>O que é o n8n</h2>
+
+  <p>n8n (pronuncia-se "n-eight-n") é uma plataforma de automação de fluxos de trabalho — open source, self-hostable e com uma interface visual onde você conecta blocos (chamados de "nodes") para criar automações sem precisar escrever código do zero.</p>
+
+  <p>A ideia central é simples: alguma coisa acontece em algum lugar (um formulário é preenchido, um pedido entra, uma mensagem chega, um horário é atingido), e a partir daí uma sequência de ações é executada automaticamente — consultar uma API, atualizar um banco de dados, enviar uma mensagem no WhatsApp, gerar um relatório, postar em uma planilha, acionar outro sistema.</p>
+
+  <p>Isso que Zapier e Make também fazem. A diferença está nos detalhes — e esses detalhes importam muito quando o processo é real e complexo.</p>
+
+  <h2>Por que o n8n se diferencia</h2>
+
+  <h3>Você pode hospedar no seu próprio servidor</h3>
+
+  <p>Zapier e Make são SaaS: seus dados passam pelos servidores deles e você paga por execução — quanto mais a automação rodar, mais você paga. Para fluxos de alto volume isso fica caro rápido.</p>
+
+  <p>O n8n pode rodar em um VPS seu, com custo fixo. Para a maioria dos projetos que faço, instalo o n8n em um servidor Linux com Docker por menos de R$ 100/mês — e o cliente tem controle total sobre os dados e sem custo variável por execução.</p>
+
+  <h3>Lógica real, não só conexões simples</h3>
+
+  <p>Zapier é excelente para o caso "<em>quando X acontece, faça Y</em>". O n8n vai muito além disso. Dentro de um fluxo você pode:</p>
+
+  <ul>
+    <li>Rodar loops — processar uma lista de itens um por um com lógica própria para cada</li>
+    <li>Escrever código JavaScript ou Python diretamente em um node, quando a lógica não cabe em um bloco visual</li>
+    <li>Criar condicionais complexas — se o valor for maior que X e o status for Y, siga por este caminho; caso contrário, pelo outro</li>
+    <li>Fazer múltiplas chamadas de API em sequência, usando o retorno de uma como entrada da próxima</li>
+    <li>Tratar erros com caminhos alternativos — se a API falhar, tente de novo; se falhar de novo, mande um alerta</li>
+  </ul>
+
+  <p>Isso é o que diferencia uma automação de brinquedo de uma automação que realmente sustenta uma operação.</p>
+
+  <h3>Mais de 400 integrações nativas — e qualquer API via HTTP</h3>
+
+  <p>O n8n já tem conectores prontos para as ferramentas mais usadas: Google Sheets, Gmail, Slack, WhatsApp Business, Notion, Airtable, HubSpot, PostgreSQL, MySQL, GitHub, e centenas de outros. Para qualquer serviço que não tenha conector pronto, você usa o node de HTTP Request e chama a API diretamente — o que na prática significa que qualquer sistema com API é integrável.</p>
+
+  <h2>Exemplos de fluxos que construo com n8n</h2>
+
+  <p>Para ficar concreto, aqui estão alguns tipos de automação que implementei com n8n em projetos reais:</p>
+
+  <h3>Notificações automáticas via WhatsApp</h3>
+
+  <p>Quando um pedido muda de status no sistema interno, o cliente recebe uma mensagem automática no WhatsApp com os detalhes. O fluxo monitora o banco de dados a cada poucos minutos, identifica mudanças e dispara a mensagem via API. Sem intervalo humano no meio.</p>
+
+  <h3>Coleta e processamento de leads</h3>
+
+  <p>Formulário do site é preenchido → n8n captura via webhook → consulta uma API para enriquecer os dados do lead → salva no CRM → notifica o time de vendas no Slack com um resumo formatado → agenda um e-mail de follow-up para 24h depois. Tudo em segundos, sem ninguém tocar em nada.</p>
+
+  <h3>Relatórios automáticos</h3>
+
+  <p>Todo dia às 7h, o n8n consulta o banco de dados de vendas, monta um resumo do dia anterior com os números mais importantes e envia por e-mail para os gestores. Fim do copy-paste de dados toda manhã.</p>
+
+  <h3>Sincronização entre sistemas</h3>
+
+  <p>Sistema A registra um novo cliente → n8n captura o evento → cria o mesmo cliente no sistema B com os campos mapeados → se der erro, registra em uma planilha de pendências e alerta no WhatsApp do responsável. Os dois sistemas ficam sincronizados sem precisar de integração nativa entre eles.</p>
+
+  <h3>Automação de conteúdo com IA</h3>
+
+  <p>Um dos projetos que mais gosto de mostrar é o <a href="https://nossaguarulhos.com.br" target="_blank" rel="noopener">Nossa Guarulhos</a> — um portal de notícias que toca praticamente sozinho. O n8n monitora fontes de notícias locais, coleta os conteúdos, passa por um modelo de IA para reescrita e adaptação, e publica automaticamente no WordPress. É um fluxo completo de produção de conteúdo sem intervenção humana constante.</p>
+
+  <div class="art-callout">
+    <strong>n8n não substitui desenvolvimento — ele potencializa.</strong> A ferramenta é poderosa, mas fluxos mal estruturados quebram em produção. O valor de ter um desenvolvedor envolvido não é só construir o fluxo — é antecipar os casos de borda, tratar erros corretamente e garantir que a automação seja confiável o suficiente para a operação depender dela.
+  </div>
+
+  <h2>Quando o n8n faz sentido — e quando não faz</h2>
+
+  <p><strong>Faz sentido usar quando:</strong></p>
+
+  <ul>
+    <li>O processo é repetitivo, tem regras definidas e acontece com frequência</li>
+    <li>Envolve mover dados entre dois ou mais sistemas que não se integram nativamente</li>
+    <li>O volume é alto o suficiente para que o custo por execução do Zapier/Make seja relevante</li>
+    <li>A empresa precisa que os dados fiquem no próprio ambiente (LGPD, compliance, dados sensíveis)</li>
+    <li>A lógica do processo vai além de "se X então Y" — tem condicionais, loops ou tratamento de erros</li>
+  </ul>
+
+  <p><strong>Não faz sentido quando:</strong></p>
+
+  <ul>
+    <li>O processo muda todo mês — automação exige estabilidade no processo</li>
+    <li>O volume é tão baixo que fazer manualmente leva menos tempo do que configurar e manter</li>
+    <li>O que precisa ser feito é uma integração profunda entre dois sistemas — aí um desenvolvimento sob medida via API resolve melhor</li>
+  </ul>
+
+  <h2>Como começo um projeto de automação com n8n</h2>
+
+  <p>Quando um cliente vem com um processo para automatizar, o primeiro passo nunca é abrir o n8n. É entender o processo.</p>
+
+  <p>Mapeio o fluxo atual: o que dispara o processo, quais sistemas estão envolvidos, quais são as exceções, o que acontece quando algo dá errado. Com isso desenhado, fica claro o que o n8n vai fazer, onde vai precisar de código customizado e onde podem existir gargalos.</p>
+
+  <p>Só depois disso começo a construir — geralmente em ambiente de testes primeiro, com dados reais mas sem impactar a operação. Quando o fluxo está estável e tratando os casos de borda corretamente, vai para produção.</p>
+
+  <p>O resultado final é uma automação que o cliente consegue monitorar — o n8n tem um histórico de execuções que mostra o que rodou, o que falhou e por quê — e que pode ser ajustada quando o processo mudar.</p>
+
+</article>
+
+<section class="art-faq">
+  <h2>Perguntas frequentes</h2>
+  <div class="faq-list">
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">n8n é gratuito? <span class="fa-arr">+</span></button>
+      <div class="fa">Sim, o n8n tem uma versão open source gratuita que você pode hospedar no seu próprio servidor. Existe também uma versão cloud paga (n8n.cloud) com planos mensais. Para empresas que querem controle total dos dados e custo fixo previsível, a auto-hospedagem em um VPS é geralmente a melhor opção — e o custo é só o do servidor, que pode ser menos de R$ 100/mês.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Qual a diferença entre n8n, Zapier e Make? <span class="fa-arr">+</span></button>
+      <div class="fa">Zapier e Make são SaaS com planos baseados em número de execuções — você paga conforme usa e os dados passam pelos servidores deles. O n8n pode ser auto-hospedado, o que significa custo fixo e dados no seu controle. Além disso, o n8n permite lógica muito mais complexa: loops, transformações de dados, chamadas a código Python ou JavaScript diretamente no fluxo, e integrações com qualquer API, mesmo sem conector pronto.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Preciso saber programar para usar o n8n? <span class="fa-arr">+</span></button>
+      <div class="fa">Para fluxos simples, não — a interface visual já resolve bastante coisa. Para fluxos mais complexos, com transformações de dados, condicionais avançadas ou chamadas a APIs sem conector pronto, algum conhecimento de JavaScript ou lógica de programação ajuda muito. É por isso que faz sentido envolver um desenvolvedor na estruturação inicial dos fluxos mais críticos.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">O n8n funciona com WhatsApp? <span class="fa-arr">+</span></button>
+      <div class="fa">Sim. O n8n se integra com a API oficial do WhatsApp Business e também com soluções como Evolution API para números convencionais. Isso permite automatizar envio de mensagens, respostas automáticas, notificações de pedidos, confirmações de agendamento e muito mais — tudo integrado com outros sistemas da operação.</div>
+    </div>
+  </div>
+</section>
+
+<div class="art-cta">
+  <div class="art-cta-box">
+    <h3>Tem um processo para automatizar?</h3>
+    <p>Me manda o processo que você quer automatizar — como funciona hoje, quais sistemas estão envolvidos e o que você quer que aconteça automaticamente. Com isso já consigo avaliar se o n8n resolve ou se a situação pede outro caminho.</p>
+    <a href="mailto:contato@marcossanches.dev" class="btn-cta">Enviar um projeto ↗</a>
+  </div>
+</div>
+
+<div class="art-back">
+  <a href="index.html">← Voltar para o blog</a>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div>
+      <b>Marcos Sanches</b>
+      <small>Consultor de Tecnologia & Desenvolvedor · Guarulhos/SP</small>
+    </div>
+    <div class="links">
+      <a href="index.html">Blog</a>
+      <a href="../index.html#contato">Contato</a>
+    </div>
+    <small class="copy">© 2026</small>
+  </div>
+</footer>
+
+<script>
+function faq(btn){var i=btn.closest('.fi'),o=i.classList.contains('open');document.querySelectorAll('.fi').forEach(function(x){x.classList.remove('open')});if(!o)i.classList.add('open');}
+</script>
+</body>
+</html>

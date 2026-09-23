@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Automatizar a emissão de NFS-e elimina horas de trabalho manual todo mês. Veja como funciona na prática — e como uma escola saiu de 200 emissões manuais para zero com um sistema sob medida.">
+<title>Como automatizar a emissão de NFS-e para empresas com muitas notas por mês | Marcos Sanches</title>
+<link rel="canonical" href="https://marcossanches.dev/blog/como-automatizar-emissao-de-nfse-para-empresas.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Marcos Sanches — Consultor de Tecnologia">
+<meta property="og:title" content="Como automatizar a emissão de NFS-e para empresas com muitas notas por mês">
+<meta property="og:description" content="Automatizar a emissão de NFS-e elimina horas de trabalho manual todo mês. Veja como funciona na prática — e como uma escola saiu de 200 emissões manuais para zero.">
+<meta property="og:url" content="https://marcossanches.dev/blog/como-automatizar-emissao-de-nfse-para-empresas.html">
+<meta property="article:published_time" content="2026-06-28">
+<meta property="article:modified_time" content="2026-06-28">
+<meta property="article:author" content="Marcos Sanches">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Como automatizar a emissão de NFS-e para empresas com muitas notas por mês">
+<meta name="twitter:description" content="Automatizar a emissão de NFS-e elimina horas de trabalho manual todo mês. Veja como funciona na prática.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Como automatizar a emissão de NFS-e para empresas com muitas notas por mês",
+  "description": "Automatizar a emissão de NFS-e elimina horas de trabalho manual todo mês. Veja como funciona na prática — e como uma escola saiu de 200 emissões manuais para zero com um sistema sob medida.",
+  "datePublished": "2026-06-28",
+  "dateModified": "2026-06-28",
+  "inLanguage": "pt-BR",
+  "author": {
+    "@type": "Person",
+    "@id": "https://marcossanches.dev/#marcos",
+    "name": "Marcos Sanches",
+    "url": "https://marcossanches.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://marcossanches.dev/#marcos",
+    "name": "Marcos Sanches"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://marcossanches.dev/blog/como-automatizar-emissao-de-nfse-para-empresas.html"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://marcossanches.dev/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://marcossanches.dev/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "Como automatizar a emissão de NFS-e", "item": "https://marcossanches.dev/blog/como-automatizar-emissao-de-nfse-para-empresas.html" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Todos os municípios permitem emissão de NFS-e via API?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Não. A disponibilidade de API varia muito por município. Grandes cidades como São Paulo, Guarulhos, Campinas e a maioria das capitais já oferecem integração via API ou webservice. Municípios menores às vezes só têm o portal manual. A primeira etapa de qualquer projeto de automação de NFS-e é verificar o que o município do cliente disponibiliza." }
+    },
+    {
+      "@type": "Question",
+      "name": "A automação de NFS-e funciona para qualquer tipo de serviço?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim, desde que o serviço esteja enquadrado nos códigos de serviço aceitos pelo município. A automação não muda o enquadramento fiscal — ela só executa a emissão com os dados que você já usaria no portal manual, mas de forma programática e em volume." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto tempo leva para desenvolver um sistema de automação de NFS-e?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Depende da complexidade: do município (alguns têm APIs bem documentadas, outros exigem engenharia reversa do portal), da quantidade de variáveis por nota e das integrações necessárias com sistemas existentes. Em projetos simples, o sistema pode estar operando em 2 a 4 semanas. Em projetos com múltiplos municípios ou integração com ERP, o prazo é maior." }
+    },
+    {
+      "@type": "Question",
+      "name": "Preciso ter um sistema de gestão para automatizar a emissão?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Não necessariamente. O sistema de automação pode buscar os dados em uma planilha, em um banco de dados próprio ou em qualquer fonte que já exista na sua operação. A integração com um sistema de gestão é opcional — e pode ser feita depois, se fizer sentido." }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0b0b0b;--paper:#f5f4ef;--line:rgba(17,17,17,.14);--darkline:rgba(255,255,255,.14);--mono:"DM Mono",monospace}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;color:#111;background:var(--paper);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.nav{position:fixed;z-index:80;top:0;left:0;width:100%;height:82px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;color:#fff;mix-blend-mode:difference}
+.brand{display:flex;gap:10px;align-items:center}
+.brand b{font-size:20px;letter-spacing:-.08em}
+.brand small{font-family:var(--mono);font-size:9px;letter-spacing:.15em}
+.nav nav{display:flex;gap:30px}
+.nav nav a,.nav-cta{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.nav nav a{transition:opacity .25s}.nav nav a:hover{opacity:.55}
+.nav-cta{border:1px solid currentColor;border-radius:99px;padding:11px 15px}
+.crumb{max-width:760px;margin:0 auto;padding:116px 24px 0;font:400 12px var(--mono);color:#999;letter-spacing:.04em}
+.crumb a{color:#555;font-weight:500}.crumb a:hover{text-decoration:underline}
+.art-hdr{max-width:760px;margin:0 auto;padding:28px 24px 36px}
+.art-cat{display:inline-block;font:600 9px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#777;border:1px solid var(--line);border-radius:99px;padding:6px 14px;margin-bottom:20px}
+.art-hdr h1{font-size:clamp(28px,4.5vw,52px);font-weight:900;letter-spacing:-.06em;line-height:.92;color:#111;margin-bottom:20px}
+.art-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font:400 12px var(--mono);color:#999}
+.art-meta strong{color:#666;font-weight:500}
+.art-cover{max-width:900px;margin:0 auto;padding:0 24px 8px}
+.art-cover-ph{height:320px;background:var(--black);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font:500 10px var(--mono);letter-spacing:.15em;text-transform:uppercase}
+.art-body{max-width:680px;margin:0 auto;padding:52px 24px 28px;font-size:17px;line-height:1.85;color:#444}
+.art-body h2{font-size:clamp(22px,2.8vw,32px);font-weight:800;letter-spacing:-.05em;color:#111;line-height:1.2;margin:48px 0 18px}
+.art-body h3{font-size:20px;font-weight:700;letter-spacing:-.03em;color:#111;margin:32px 0 14px}
+.art-body p{margin-bottom:20px}
+.art-body ul,.art-body ol{margin:0 0 20px 24px}
+.art-body li{margin-bottom:10px}
+.art-body strong{color:#111;font-weight:600}
+.art-callout{border-left:3px solid #111;padding:18px 24px;margin:32px 0;font-size:15px;color:#555;background:#eceae4}
+.art-callout strong{color:#111}
+.art-faq{max-width:680px;margin:48px auto 0;padding:0 24px}
+.art-faq h2{font-size:22px;font-weight:800;letter-spacing:-.04em;margin-bottom:24px;color:#111}
+.faq-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.fi{border-bottom:1px solid var(--line)}
+.fq{width:100%;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font:500 15px Inter,sans-serif;color:#111;text-align:left;gap:16px}
+.fa-arr{flex-shrink:0;font:300 20px var(--mono);color:#999;transition:transform .3s}
+.fi.open .fa-arr{transform:rotate(45deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;font-size:14px;color:#666;line-height:1.75}
+.fi.open .fa{max-height:500px;padding:0 0 20px}
+.art-cta{max-width:680px;margin:52px auto 0;padding:0 24px}
+.art-cta-box{background:var(--black);padding:44px 40px;text-align:center}
+.art-cta-box h3{font-size:clamp(22px,3vw,34px);font-weight:900;letter-spacing:-.06em;color:#fff;margin-bottom:12px}
+.art-cta-box p{font-size:14px;color:#999;margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn-cta{display:inline-block;font:700 10px var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:16px 28px;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:99px;transition:background .2s,color .2s}
+.btn-cta:hover{background:#fff;color:#111}
+.art-back{max-width:680px;margin:36px auto 72px;padding:0 24px}
+.art-back a{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:#999;border-bottom:1px solid var(--line);padding-bottom:4px}
+.art-back a:hover{color:#111;border-color:#111}
+.footer{border-top:1px solid var(--darkline);padding:32px 0;background:var(--black)}
+.footer .container{width:min(1240px,calc(100% - 64px));margin:auto;display:grid;grid-template-columns:1fr auto auto;gap:30px;align-items:center}
+.footer b{display:block;color:#f5f5f2;font-size:14px}
+.footer small{display:block;color:#555;font:400 9px var(--mono);margin-top:5px}
+.footer .links{display:flex;gap:25px;font:400 9px var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.footer .links a{color:#555;transition:color .2s}.footer .links a:hover{color:#f5f5f2}
+.footer .copy{font:400 9px var(--mono);color:#333}
+@media(max-width:900px){.nav{padding:0 20px;height:70px}.nav nav{display:none}.nav-cta{padding:9px 12px;font-size:9px}.footer .container{grid-template-columns:1fr}}
+@media(max-width:600px){.nav-cta{display:none}.brand small{display:none}.crumb{padding-top:100px}.art-cover-ph{height:200px}.art-body{font-size:16px}.art-cta-box{padding:32px 24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html"><b>MS</b><small>TECNOLOGIA</small></a>
+  <nav>
+    <a href="../index.html#solucoes">Soluções</a>
+    <a href="../index.html#cases">Cases</a>
+    <a href="index.html">Blog</a>
+  </nav>
+  <a class="nav-cta" href="../index.html#contato">Falar sobre um projeto ↗</a>
+</header>
+
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="../index.html">Início</a> &nbsp;/&nbsp;
+  <a href="index.html">Blog</a> &nbsp;/&nbsp;
+  Como automatizar a emissão de NFS-e
+</nav>
+
+<header class="art-hdr">
+  <span class="art-cat">Automação</span>
+  <h1>Como automatizar a emissão de NFS-e para empresas com muitas notas por mês</h1>
+  <div class="art-meta">
+    <span><strong>Marcos Sanches</strong></span>
+    <span>·</span>
+    <span>28 de junho de 2026</span>
+    <span>·</span>
+    <span>6 min de leitura</span>
+  </div>
+</header>
+
+<div class="art-cover">
+  <div class="art-cover-ph">Automação de NFS-e · Emissão em Massa · PHP · API Fiscal</div>
+</div>
+
+<article class="art-body">
+
+  <p>Se a sua empresa emite muitas notas fiscais de serviço todo mês — dezenas, centenas — e ainda faz isso de forma manual pelo portal da prefeitura, este artigo é sobre o tempo que você está desperdiçando. Não é crítica: a maioria das empresas começa assim. O problema é quando a operação cresce e o processo não acompanha.</p>
+
+  <p>Vou contar como construí um sistema de automação de NFS-e para uma escola aqui em Guarulhos, o que aprendi no processo e o que qualquer empresa precisa saber antes de partir para uma solução desse tipo.</p>
+
+  <h2>O problema: 200 notas por mês, uma por uma</h2>
+
+  <p>A escola tinha pouco mais de 200 alunos ativos. Todo mês, no fechamento, a equipe administrativa precisava entrar no portal da prefeitura, preencher os dados de cada aluno manualmente — nome, CPF, valor, código de serviço, descrição — e emitir a nota. Uma por uma. O processo levava horas, era suscetível a erros de digitação e dependia de uma pessoa específica que sabia como navegar no sistema da prefeitura.</p>
+
+  <p>Quando um aluno tinha desconto, mudança de plano ou frequência variável, a complexidade aumentava. Quando o portal da prefeitura ficava instável — o que acontecia com frequência — o trabalho travava. E quando essa pessoa tirava férias, o problema virava da equipe inteira.</p>
+
+  <p>O custo real não era só o tempo. Era a atenção bloqueada de alguém qualificado em uma tarefa puramente mecânica.</p>
+
+  <h2>Como funciona a automação de NFS-e na prática</h2>
+
+  <p>A maioria dos municípios brasileiros de médio e grande porte oferece alguma forma de integração programática para emissão de NFS-e — seja via API REST, webservice SOAP ou até automação do próprio portal via scraping. A abordagem depende do que o município disponibiliza.</p>
+
+  <h3>Municípios com API oficial</h3>
+
+  <p>Guarulhos, São Paulo, Campinas e a maioria das capitais têm APIs documentadas para emissão de NFS-e. Nesse caso, o sistema que construímos funciona assim:</p>
+
+  <ol>
+    <li>Busca os dados dos alunos/clientes em uma fonte central (banco de dados, planilha ou sistema de gestão)</li>
+    <li>Calcula o valor correto para cada um, aplicando descontos, planos e regras específicas</li>
+    <li>Monta o payload XML ou JSON no formato exigido pela prefeitura</li>
+    <li>Envia para a API municipal com as credenciais do estabelecimento</li>
+    <li>Recebe a confirmação, salva o número da nota e o XML assinado</li>
+    <li>Envia o PDF da nota por e-mail para o cliente, automaticamente</li>
+  </ol>
+
+  <p>Tudo isso roda em segundo plano, sem ninguém precisar abrir portal nenhum. No caso da escola, o processo que levava horas passou a rodar em menos de 10 minutos — incluindo o envio das notas por e-mail para todos os responsáveis.</p>
+
+  <h3>Municípios sem API — automação via portal</h3>
+
+  <p>Para prefeituras que não têm API, a alternativa é automatizar o próprio navegador usando ferramentas como Puppeteer ou Selenium. O sistema simula o que um humano faria: abre o portal, faz login, preenche os campos, confirma a emissão. É menos elegante e mais frágil a mudanças no layout do portal, mas resolve o problema onde a API não existe.</p>
+
+  <div class="art-callout">
+    <strong>A variável mais importante é o município.</strong> Antes de qualquer conversa sobre desenvolvimento, o primeiro passo é verificar o que a prefeitura do seu município oferece. Isso define a abordagem técnica, o prazo e boa parte do custo do projeto.
+  </div>
+
+  <h2>O que o sistema precisa ter além da emissão</h2>
+
+  <p>Emitir a nota é só parte do trabalho. Um sistema de automação de NFS-e bem construído precisa lidar com algumas outras coisas:</p>
+
+  <ul>
+    <li><strong>Tratamento de erros:</strong> a API da prefeitura rejeita notas por diversos motivos — CPF inválido, código de serviço errado, valor fora do padrão. O sistema precisa capturar esses erros, registrá-los e alertar alguém, sem travar o processo inteiro.</li>
+    <li><strong>Reemissão e cancelamento:</strong> notas precisam ser canceladas e reemitidas eventualmente. O sistema precisa suportar isso sem exigir acesso manual ao portal.</li>
+    <li><strong>Armazenamento dos XMLs:</strong> o XML assinado é o documento fiscal oficial. Precisa ser armazenado de forma segura e acessível para a contabilidade.</li>
+    <li><strong>Log de todas as operações:</strong> quem foi faturado, quando, qual foi o retorno da prefeitura, qual o número da nota. Rastreabilidade completa.</li>
+    <li><strong>Relatório mensal:</strong> um resumo do que foi emitido, com totais, para facilitar o fechamento contábil.</li>
+  </ul>
+
+  <h2>Quais empresas se beneficiam mais</h2>
+
+  <p>Esse tipo de automação faz mais sentido para operações com volume repetitivo e previsível. Os perfis que mais se beneficiam:</p>
+
+  <ul>
+    <li><strong>Escolas e cursos:</strong> mensalidades fixas com base de alunos recorrente — o caso exato que descrevi acima.</li>
+    <li><strong>Clínicas e consultórios:</strong> faturamento por sessão, plano ou pacote mensal.</li>
+    <li><strong>Academias e estúdios:</strong> planos mensais com variações de desconto e frequência.</li>
+    <li><strong>Prestadoras de serviço com contratos recorrentes:</strong> empresas de limpeza, segurança, TI — qualquer operação com carteira de clientes fixos.</li>
+    <li><strong>Marketplaces e plataformas:</strong> que precisam emitir nota para cada transação ou repasse.</li>
+  </ul>
+
+  <p>Para empresas que emitem menos de 20 ou 30 notas por mês, o ganho de tempo não justifica o investimento no desenvolvimento. A partir daí, a conta começa a fechar — especialmente quando se considera o custo de retrabalho por erros de digitação ou atrasos no fechamento.</p>
+
+  <h2>Como esse projeto se conecta com o Arquivo Simples</h2>
+
+  <p>O trabalho com automação fiscal me levou a construir também o <strong>Arquivo Simples</strong>, uma plataforma para centralizar a consulta e gestão de documentos fiscais eletrônicos — NF-e, CT-e, XML, DANFE e DACTE. São dois lados do mesmo problema: emitir de forma automática e depois ter onde consultar e gerenciar esses documentos de forma centralizada.</p>
+
+  <p>Quem emite em volume precisa das duas coisas: automação na saída e organização no arquivo. É um problema que conheço de perto — técnica e operacionalmente.</p>
+
+  <h2>Por onde começar se você quer automatizar</h2>
+
+  <p>O processo é direto:</p>
+
+  <ol>
+    <li><strong>Verificar o que o município disponibiliza</strong> — API, webservice ou só portal manual.</li>
+    <li><strong>Mapear a fonte dos dados</strong> — de onde vêm nome, CPF, valor e código de serviço de cada cliente.</li>
+    <li><strong>Definir as regras de negócio</strong> — descontos, planos, exceções, periodicidade.</li>
+    <li><strong>Desenvolver e testar em ambiente de homologação</strong> — a maioria das prefeituras com API tem ambiente de testes.</li>
+    <li><strong>Implantar e monitorar</strong> — o primeiro ciclo real precisa de acompanhamento para capturar casos que não foram mapeados.</li>
+  </ol>
+
+  <p>Não é um projeto de meses. Em situações simples, com API municipal disponível e dados organizados, um sistema funcional pode estar em produção em duas a três semanas.</p>
+
+</article>
+
+<section class="art-faq">
+  <h2>Perguntas frequentes</h2>
+  <div class="faq-list">
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Todos os municípios permitem emissão de NFS-e via API? <span class="fa-arr">+</span></button>
+      <div class="fa">Não. A disponibilidade de API varia muito por município. Grandes cidades como São Paulo, Guarulhos, Campinas e a maioria das capitais já oferecem integração via API ou webservice. Municípios menores às vezes só têm o portal manual. A primeira etapa de qualquer projeto de automação de NFS-e é verificar o que o município do cliente disponibiliza.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">A automação de NFS-e funciona para qualquer tipo de serviço? <span class="fa-arr">+</span></button>
+      <div class="fa">Sim, desde que o serviço esteja enquadrado nos códigos de serviço aceitos pelo município. A automação não muda o enquadramento fiscal — ela só executa a emissão com os dados que você já usaria no portal manual, mas de forma programática e em volume.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Quanto tempo leva para desenvolver um sistema de automação de NFS-e? <span class="fa-arr">+</span></button>
+      <div class="fa">Depende da complexidade: do município (alguns têm APIs bem documentadas, outros exigem engenharia reversa do portal), da quantidade de variáveis por nota e das integrações necessárias com sistemas existentes. Em projetos simples, o sistema pode estar operando em 2 a 4 semanas. Em projetos com múltiplos municípios ou integração com ERP, o prazo é maior.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Preciso ter um sistema de gestão para automatizar a emissão? <span class="fa-arr">+</span></button>
+      <div class="fa">Não necessariamente. O sistema de automação pode buscar os dados em uma planilha, em um banco de dados próprio ou em qualquer fonte que já exista na sua operação. A integração com um sistema de gestão é opcional — e pode ser feita depois, se fizer sentido.</div>
+    </div>
+  </div>
+</section>
+
+<div class="art-cta">
+  <div class="art-cta-box">
+    <h3>Emite muitas notas manualmente todo mês?</h3>
+    <p>Me conta como funciona o processo hoje — volume, município, de onde vêm os dados dos clientes. Com isso já consigo te dizer se a automação resolve e o que seria necessário.</p>
+    <a href="mailto:contato@marcossanches.dev" class="btn-cta">Enviar um projeto ↗</a>
+  </div>
+</div>
+
+<div class="art-back">
+  <a href="index.html">← Voltar para o blog</a>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div>
+      <b>Marcos Sanches</b>
+      <small>Consultor de Tecnologia & Desenvolvedor · Guarulhos/SP</small>
+    </div>
+    <div class="links">
+      <a href="index.html">Blog</a>
+      <a href="../index.html#contato">Contato</a>
+    </div>
+    <small class="copy">© 2026</small>
+  </div>
+</footer>
+
+<script>
+function faq(btn){var i=btn.closest('.fi'),o=i.classList.contains('open');document.querySelectorAll('.fi').forEach(function(x){x.classList.remove('open')});if(!o)i.classList.add('open');}
+</script>
+</body>
+</html>

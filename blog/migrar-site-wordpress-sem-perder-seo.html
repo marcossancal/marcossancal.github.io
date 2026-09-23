@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Migração de site WordPress feita errada apaga anos de SEO em horas. Veja o checklist técnico completo: redirects, canonical, sitemap, Search Console e o que verificar depois da virada.">
+<title>Como migrar um site WordPress sem perder o SEO que você construiu | Marcos Sanches</title>
+<link rel="canonical" href="https://marcossanches.dev/blog/migrar-site-wordpress-sem-perder-seo.html">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Marcos Sanches — Consultor de Tecnologia">
+<meta property="og:title" content="Como migrar um site WordPress sem perder o SEO que você construiu">
+<meta property="og:description" content="Migração de site WordPress feita errada apaga anos de SEO em horas. Veja o checklist técnico completo: redirects, canonical, sitemap e o que verificar depois da virada.">
+<meta property="og:url" content="https://marcossanches.dev/blog/migrar-site-wordpress-sem-perder-seo.html">
+<meta property="article:published_time" content="2026-07-30">
+<meta property="article:modified_time" content="2026-07-30">
+<meta property="article:author" content="Marcos Sanches">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Como migrar um site WordPress sem perder o SEO que você construiu">
+<meta name="twitter:description" content="Checklist técnico completo para migração de WordPress sem perder posicionamento no Google.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Como migrar um site WordPress sem perder o SEO que você construiu",
+  "description": "Migração de site WordPress feita errada apaga anos de SEO em horas. Veja o checklist técnico completo: redirects, canonical, sitemap, Search Console e o que verificar depois da virada.",
+  "datePublished": "2026-07-30",
+  "dateModified": "2026-07-30",
+  "inLanguage": "pt-BR",
+  "author": {
+    "@type": "Person",
+    "@id": "https://marcossanches.dev/#marcos",
+    "name": "Marcos Sanches",
+    "url": "https://marcossanches.dev"
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://marcossanches.dev/#marcos",
+    "name": "Marcos Sanches"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://marcossanches.dev/blog/migrar-site-wordpress-sem-perder-seo.html"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://marcossanches.dev/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://marcossanches.dev/blog/" },
+    { "@type": "ListItem", "position": 3, "name": "Como migrar WordPress sem perder SEO", "item": "https://marcossanches.dev/blog/migrar-site-wordpress-sem-perder-seo.html" }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quanto tempo leva para o Google reindexar um site depois de uma migração?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Depende do tamanho do site e da autoridade do domínio. Sites pequenos com bom histórico costumam ser reindexados em dias. Sites grandes podem levar semanas. O que acelera o processo é submeter o sitemap atualizado no Search Console logo após a migração, usar a ferramenta de inspeção de URL para solicitar reindexação das páginas mais importantes, e garantir que os redirects 301 estejam todos corretos — eles passam a autoridade das URLs antigas para as novas." }
+    },
+    {
+      "@type": "Question",
+      "name": "Redirect 301 ou 302 — qual usar na migração?",
+      "acceptedAnswer": { "@type": "Answer", "text": "301 sempre, em migrações. O 301 é permanente e instrui o Google a transferir a autoridade da URL antiga para a nova. O 302 é temporário — o Google não transfere autoridade e continua indexando a URL original. Usar 302 em uma migração é um dos erros que mais prejudica o SEO." }
+    },
+    {
+      "@type": "Question",
+      "name": "Preciso manter o servidor antigo ativo depois da migração?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sim, por pelo menos 30 dias. Enquanto o Google ainda não reindexou todas as páginas nas novas URLs, manter o servidor antigo com os redirects 301 configurados garante que qualquer visita vinda de um link externo ou de uma busca ainda não atualizada chegue ao destino certo. Derrubar o servidor antigo antes disso pode gerar 404 em páginas que ainda não foram reindexadas." }
+    },
+    {
+      "@type": "Question",
+      "name": "O que fazer se o ranking cair depois da migração mesmo com todos os redirects corretos?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Queda temporária de ranking nos primeiros 7 a 14 dias depois da migração é normal — o Google está processando as mudanças. Se a queda persistir além de 3 a 4 semanas, verifique: se todos os redirects estão respondendo com 301 (não 302 ou redirect chains), se o canonical das novas URLs aponta para si mesmo, se o robots.txt não está bloqueando rastreamento por engano, e se o sitemap submetido no Search Console contém as novas URLs. A maioria dos problemas persistentes de SEO pós-migração tem origem em uma dessas quatro causas." }
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#0b0b0b;--paper:#f5f4ef;--line:rgba(17,17,17,.14);--darkline:rgba(255,255,255,.14);--mono:"DM Mono",monospace}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;color:#111;background:var(--paper);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.nav{position:fixed;z-index:80;top:0;left:0;width:100%;height:82px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;color:#fff;mix-blend-mode:difference}
+.brand{display:flex;gap:10px;align-items:center}
+.brand b{font-size:20px;letter-spacing:-.08em}
+.brand small{font-family:var(--mono);font-size:9px;letter-spacing:.15em}
+.nav nav{display:flex;gap:30px}
+.nav nav a,.nav-cta{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.nav nav a{transition:opacity .25s}.nav nav a:hover{opacity:.55}
+.nav-cta{border:1px solid currentColor;border-radius:99px;padding:11px 15px}
+.crumb{max-width:760px;margin:0 auto;padding:116px 24px 0;font:400 12px var(--mono);color:#999;letter-spacing:.04em}
+.crumb a{color:#555;font-weight:500}.crumb a:hover{text-decoration:underline}
+.art-hdr{max-width:760px;margin:0 auto;padding:28px 24px 36px}
+.art-cat{display:inline-block;font:600 9px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#777;border:1px solid var(--line);border-radius:99px;padding:6px 14px;margin-bottom:20px}
+.art-hdr h1{font-size:clamp(28px,4.5vw,52px);font-weight:900;letter-spacing:-.06em;line-height:.92;color:#111;margin-bottom:20px}
+.art-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font:400 12px var(--mono);color:#999}
+.art-meta strong{color:#666;font-weight:500}
+.art-cover{max-width:900px;margin:0 auto;padding:0 24px 8px}
+.art-cover-ph{height:320px;background:var(--black);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.25);font:500 10px var(--mono);letter-spacing:.15em;text-transform:uppercase}
+.art-body{max-width:680px;margin:0 auto;padding:52px 24px 28px;font-size:17px;line-height:1.85;color:#444}
+.art-body h2{font-size:clamp(22px,2.8vw,32px);font-weight:800;letter-spacing:-.05em;color:#111;line-height:1.2;margin:48px 0 18px}
+.art-body h3{font-size:20px;font-weight:700;letter-spacing:-.03em;color:#111;margin:32px 0 14px}
+.art-body p{margin-bottom:20px}
+.art-body ul,.art-body ol{margin:0 0 20px 24px}
+.art-body li{margin-bottom:10px}
+.art-body strong{color:#111;font-weight:600}
+.art-body code{font-family:var(--mono);font-size:13px;background:#eceae4;padding:2px 6px;border-radius:2px}
+.art-body pre{background:var(--black);color:#f5f5f2;font:400 13px/1.7 var(--mono);padding:24px;overflow-x:auto;margin:24px 0;border-radius:2px}
+.art-callout{border-left:3px solid #111;padding:18px 24px;margin:32px 0;font-size:15px;color:#555;background:#eceae4}
+.art-callout strong{color:#111}
+.checklist{list-style:none;margin:0 0 20px;padding:0}
+.checklist li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:flex-start;font-size:15px;color:#444}
+.checklist li:last-child{border-bottom:none}
+.checklist li::before{content:"□";font-family:var(--mono);font-size:16px;color:#999;flex-shrink:0;margin-top:2px}
+.checklist li strong{color:#111;display:block;margin-bottom:3px}
+.checklist li span{color:#777;font-size:13px;display:block}
+.art-faq{max-width:680px;margin:48px auto 0;padding:0 24px}
+.art-faq h2{font-size:22px;font-weight:800;letter-spacing:-.04em;margin-bottom:24px;color:#111}
+.faq-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.fi{border-bottom:1px solid var(--line)}
+.fq{width:100%;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font:500 15px Inter,sans-serif;color:#111;text-align:left;gap:16px}
+.fa-arr{flex-shrink:0;font:300 20px var(--mono);color:#999;transition:transform .3s}
+.fi.open .fa-arr{transform:rotate(45deg)}
+.fa{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s;font-size:14px;color:#666;line-height:1.75}
+.fi.open .fa{max-height:500px;padding:0 0 20px}
+.art-cta{max-width:680px;margin:52px auto 0;padding:0 24px}
+.art-cta-box{background:var(--black);padding:44px 40px;text-align:center}
+.art-cta-box h3{font-size:clamp(22px,3vw,34px);font-weight:900;letter-spacing:-.06em;color:#fff;margin-bottom:12px}
+.art-cta-box p{font-size:14px;color:#999;margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7}
+.btn-cta{display:inline-block;font:700 10px var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:16px 28px;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:99px;transition:background .2s,color .2s}
+.btn-cta:hover{background:#fff;color:#111}
+.art-back{max-width:680px;margin:36px auto 72px;padding:0 24px}
+.art-back a{font:500 10px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:#999;border-bottom:1px solid var(--line);padding-bottom:4px}
+.art-back a:hover{color:#111;border-color:#111}
+.footer{border-top:1px solid var(--darkline);padding:32px 0;background:var(--black)}
+.footer .container{width:min(1240px,calc(100% - 64px));margin:auto;display:grid;grid-template-columns:1fr auto auto;gap:30px;align-items:center}
+.footer b{display:block;color:#f5f5f2;font-size:14px}
+.footer small{display:block;color:#555;font:400 9px var(--mono);margin-top:5px}
+.footer .links{display:flex;gap:25px;font:400 9px var(--mono);text-transform:uppercase;letter-spacing:.05em}
+.footer .links a{color:#555;transition:color .2s}.footer .links a:hover{color:#f5f5f2}
+.footer .copy{font:400 9px var(--mono);color:#333}
+@media(max-width:900px){.nav{padding:0 20px;height:70px}.nav nav{display:none}.nav-cta{padding:9px 12px;font-size:9px}.footer .container{grid-template-columns:1fr}}
+@media(max-width:600px){.nav-cta{display:none}.brand small{display:none}.crumb{padding-top:100px}.art-cover-ph{height:200px}.art-body{font-size:16px}.art-cta-box{padding:32px 24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<header class="nav">
+  <a class="brand" href="../index.html"><b>MS</b><small>TECNOLOGIA</small></a>
+  <nav>
+    <a href="../index.html#solucoes">Soluções</a>
+    <a href="../index.html#cases">Cases</a>
+    <a href="index.html">Blog</a>
+  </nav>
+  <a class="nav-cta" href="../index.html#contato">Falar sobre um projeto ↗</a>
+</header>
+
+<nav class="crumb" aria-label="Breadcrumb">
+  <a href="../index.html">Início</a> &nbsp;/&nbsp;
+  <a href="index.html">Blog</a> &nbsp;/&nbsp;
+  Como migrar WordPress sem perder SEO
+</nav>
+
+<header class="art-hdr">
+  <span class="art-cat">SEO Técnico</span>
+  <h1>Como migrar um site WordPress sem perder o SEO que você construiu</h1>
+  <div class="art-meta">
+    <span><strong>Marcos Sanches</strong></span>
+    <span>·</span>
+    <span>30 de julho de 2026</span>
+    <span>·</span>
+    <span>8 min de leitura</span>
+  </div>
+</header>
+
+<div class="art-cover">
+  <div class="art-cover-ph">Migração WordPress · SEO Técnico · Redirects · Search Console</div>
+</div>
+
+<article class="art-body">
+
+  <p>Migração de site é uma das operações que mais assusta quem investiu anos construindo posicionamento no Google — e com razão. Feita de forma errada, uma migração pode derrubar rankings em horas e levar meses para recuperar. Feita corretamente, o Google processa a mudança em dias e o impacto no tráfego é mínimo.</p>
+
+  <p>A diferença entre os dois cenários está na preparação e nos detalhes técnicos. Este artigo é um checklist completo do que fazer antes, durante e depois de uma migração de WordPress — seja de servidor, de domínio, ou dos dois ao mesmo tempo.</p>
+
+  <div class="art-callout">
+    <strong>Antes de qualquer coisa:</strong> nunca faça uma migração no horário de pico do seu site. Escolha uma madrugada ou um final de semana com menor tráfego. E avise sua equipe — mudanças de DNS afetam e-mail, integrações e outros serviços conectados ao domínio.
+  </div>
+
+  <h2>Entenda o que você está migrando</h2>
+
+  <p>Existem três tipos de migração, e cada um tem implicações diferentes para o SEO:</p>
+
+  <ul>
+    <li><strong>Migração de servidor (mesmo domínio):</strong> você move os arquivos e o banco de dados para um novo hosting, mas o domínio não muda. É o tipo com menor risco para o SEO — as URLs continuam as mesmas, o Google não precisa reindexar nada.</li>
+    <li><strong>Migração de domínio (novo endereço):</strong> você muda de <code>site-antigo.com.br</code> para <code>site-novo.com.br</code>. Todas as URLs mudam, todos os backlinks externos apontam para o domínio antigo, e o Google precisa entender que o conteúdo se moveu. É onde a maioria dos problemas de SEO acontece.</li>
+    <li><strong>Migração de servidor + domínio:</strong> a combinação dos dois. Mais complexa, mais risco — mas com o processo correto, totalmente controlável.</li>
+  </ul>
+
+  <p>O checklist abaixo cobre o cenário mais completo: mudança de servidor e de domínio. Se a sua migração for só de servidor, pule as partes que tratam de URLs e domínio.</p>
+
+  <h2>Fase 1: antes de mover qualquer coisa</h2>
+
+  <h3>Faça um backup completo e verifique</h3>
+
+  <p>Backup de arquivos e de banco de dados — os dois. E teste a restauração antes de começar. Um backup que não restaura não é um backup.</p>
+
+  <h3>Documente o estado atual do SEO</h3>
+
+  <p>Antes de mexer em qualquer coisa, registre onde você está. Isso vai ser a régua para medir o impacto depois:</p>
+
+  <ul>
+    <li>Exporte o relatório de páginas indexadas do Google Search Console</li>
+    <li>Registre as posições médias das principais palavras-chave</li>
+    <li>Anote o tráfego orgânico dos últimos 30 dias no Google Analytics</li>
+    <li>Liste as 20–30 páginas com mais tráfego orgânico</li>
+    <li>Exporte todos os backlinks do Ahrefs, SEMrush ou Google Search Console</li>
+  </ul>
+
+  <h3>Mapeie todas as URLs que existem</h3>
+
+  <p>Use o Screaming Frog (gratuito até 500 URLs) ou o sitemap atual para listar todas as URLs indexadas. Essa lista vai ser usada para criar os redirects.</p>
+
+  <h3>Monte o mapa de redirects</h3>
+
+  <p>Para cada URL antiga, defina a URL nova correspondente. Planilha mesmo — uma coluna com a URL de origem, outra com o destino. Toda URL que existe hoje e vai existir no novo site precisa ter um redirect 301 mapeado.</p>
+
+  <p>URLs que não vão existir no novo site precisam redirecionar para a página mais próxima tematicamente — nunca para a home por padrão. Mandar tudo para a home é um sinal negativo para o Google.</p>
+
+  <h2>Fase 2: configuração do novo ambiente</h2>
+
+  <h3>Instale e configure o WordPress no novo servidor</h3>
+
+  <p>Configure o site no novo servidor com um domínio temporário ou via arquivo <code>hosts</code> local para testar antes de apontar o DNS. Nunca virar o DNS antes de testar o site funcionando.</p>
+
+  <h3>Migre os arquivos e o banco de dados</h3>
+
+  <p>Ferramentas como o plugin Duplicator, All-in-One WP Migration ou rsync via SSH fazem isso bem. Após a migração, atualize as URLs no banco de dados com o WP-CLI:</p>
+
+  <pre>wp search-replace 'https://dominio-antigo.com.br' 'https://dominio-novo.com.br' --all-tables</pre>
+
+  <p>Rode isso duas vezes: uma para HTTP e outra para HTTPS, se o domínio antigo tinha os dois.</p>
+
+  <h3>Configure os redirects 301 no servidor antigo</h3>
+
+  <p>No <code>.htaccess</code> do servidor antigo (para Apache), com base no mapa de redirects que você montou:</p>
+
+  <pre>RewriteEngine On
+RewriteRule ^slug-antigo/?$ https://dominio-novo.com.br/slug-novo/ [R=301,L]</pre>
+
+  <p>Para redirecionamento global de domínio (tudo do antigo para o novo, mantendo o caminho):</p>
+
+  <pre>RewriteEngine On
+RewriteCond %{HTTP_HOST} ^dominio-antigo\.com\.br$ [NC]
+RewriteRule ^(.*)$ https://dominio-novo.com.br/$1 [R=301,L]</pre>
+
+  <p>Se o servidor usa Nginx, a lógica é diferente — ajuste conforme a configuração do seu servidor.</p>
+
+  <h3>Force HTTPS no novo site</h3>
+
+  <p>Certifique-se de que o certificado SSL está instalado e que qualquer acesso via HTTP redireciona para HTTPS com 301. Mixed content (páginas HTTPS que carregam recursos via HTTP) também prejudica o SEO e a segurança.</p>
+
+  <h2>Fase 3: verificações antes de virar o DNS</h2>
+
+  <p>Com o site funcionando no novo servidor (via domínio temporário ou <code>hosts</code>), verifique item por item antes de apontar o DNS:</p>
+
+  <ul class="checklist">
+    <li>
+      <div>
+        <strong>Todas as páginas carregam corretamente</strong>
+        <span>Teste as 20 páginas com mais tráfego — conteúdo, imagens, links internos</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Formulários e funcionalidades funcionam</strong>
+        <span>Contato, checkout, login, busca — tudo que o usuário pode interagir</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>robots.txt não está bloqueando rastreamento</strong>
+        <span>Verifique se não há <code>Disallow: /</code> no robots.txt do novo servidor</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Canonical tags apontam para as URLs corretas</strong>
+        <span>Cada página deve ter canonical apontando para si mesma no novo domínio</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Sitemap atualizado com as novas URLs</strong>
+        <span>O sitemap.xml deve listar as URLs do novo domínio, não do antigo</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Google Analytics e Search Console configurados</strong>
+        <span>Tags instaladas e propriedade verificada no novo domínio</span>
+      </div>
+    </li>
+    <li>
+      <div>
+        <strong>Velocidade de carregamento aceitável</strong>
+        <span>Teste com PageSpeed Insights — problemas de performance no novo servidor afetam SEO</span>
+      </div>
+    </li>
+  </ul>
+
+  <h2>Fase 4: virando o DNS e as primeiras 48 horas</h2>
+
+  <h3>Reduza o TTL do DNS antes da migração</h3>
+
+  <p>Com 24–48 horas de antecedência, reduza o TTL (Time to Live) do DNS para 300 segundos (5 minutos). Isso faz com que a propagação do DNS seja muito mais rápida na hora da virada — em vez de 24 horas, leva minutos.</p>
+
+  <h3>Aponte o DNS e monitore</h3>
+
+  <p>Aponte o domínio para o novo servidor. Confirme a propagação com ferramentas como <code>dnschecker.org</code>. Mantenha o servidor antigo ativo com os redirects configurados — ele vai receber tráfego enquanto o DNS ainda não propagou para todos os resolvedores.</p>
+
+  <h3>Submeta o novo sitemap no Search Console</h3>
+
+  <p>Acesse o Search Console do novo domínio e submeta o sitemap imediatamente após a virada. Isso acelera o rastreamento e a reindexação das novas URLs.</p>
+
+  <h3>Notifique a mudança de endereço no Search Console</h3>
+
+  <p>Se houve mudança de domínio, use a ferramenta "Mudança de endereço" no Search Console antigo (em Configurações). Isso instrui o Google a transferir os sinais de ranqueamento do domínio antigo para o novo de forma mais rápida.</p>
+
+  <h2>Fase 5: monitoramento pós-migração</h2>
+
+  <p>Nos primeiros 30 dias, acompanhe semanalmente:</p>
+
+  <ul>
+    <li><strong>Erros de rastreamento no Search Console:</strong> páginas retornando 404, erros de servidor, redirects chains (quando um redirect aponta para outro redirect, que aponta para outro)</li>
+    <li><strong>Cobertura de índice:</strong> quantas páginas estão indexadas no novo domínio — deve crescer progressivamente</li>
+    <li><strong>Tráfego orgânico no Analytics:</strong> comparando com o período equivalente antes da migração</li>
+    <li><strong>Posições das principais palavras-chave:</strong> usando o Search Console ou uma ferramenta de monitoramento</li>
+  </ul>
+
+  <div class="art-callout">
+    <strong>Queda temporária é normal.</strong> Nos primeiros 7 a 14 dias após uma migração com mudança de domínio, alguma queda de tráfego é esperada — o Google está processando os redirects e reindexando as novas URLs. Se a queda persistir além de 4 semanas, investigue os redirects, os canonicals e o robots.txt.
+  </div>
+
+  <h2>Os erros mais comuns que prejudicam o SEO na migração</h2>
+
+  <ul>
+    <li><strong>Usar redirect 302 em vez de 301:</strong> o 302 é temporário — o Google não transfere autoridade e continua indexando a URL antiga.</li>
+    <li><strong>Redirect chains:</strong> URL A redireciona para URL B que redireciona para URL C. Cada salto dilui a autoridade. O redirect deve ir direto do origem ao destino final.</li>
+    <li><strong>Derrubar o servidor antigo antes da propagação completa:</strong> visitas vindas de links externos ou de buscas ainda não atualizadas vão para um servidor que não existe.</li>
+    <li><strong>robots.txt bloqueando rastreamento por engano:</strong> acontece quando o arquivo do ambiente de desenvolvimento (que bloqueia tudo para não ser indexado) vai para produção sem ser revisado.</li>
+    <li><strong>Sitemap com URLs antigas:</strong> submeter o sitemap do domínio antigo no Search Console do novo domínio confunde o Google sobre qual URL deve ser indexada.</li>
+    <li><strong>Canonical apontando para o domínio errado:</strong> se o plugin de SEO não foi atualizado após o search-replace no banco, os canonicals podem ainda apontar para o domínio antigo.</li>
+  </ul>
+
+</article>
+
+<section class="art-faq">
+  <h2>Perguntas frequentes</h2>
+  <div class="faq-list">
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Quanto tempo leva para o Google reindexar um site depois de uma migração? <span class="fa-arr">+</span></button>
+      <div class="fa">Depende do tamanho do site e da autoridade do domínio. Sites pequenos com bom histórico costumam ser reindexados em dias. Sites grandes podem levar semanas. O que acelera o processo é submeter o sitemap atualizado no Search Console logo após a migração, usar a ferramenta de inspeção de URL para solicitar reindexação das páginas mais importantes, e garantir que os redirects 301 estejam todos corretos — eles passam a autoridade das URLs antigas para as novas.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Redirect 301 ou 302 — qual usar na migração? <span class="fa-arr">+</span></button>
+      <div class="fa">301 sempre, em migrações. O 301 é permanente e instrui o Google a transferir a autoridade da URL antiga para a nova. O 302 é temporário — o Google não transfere autoridade e continua indexando a URL original. Usar 302 em uma migração é um dos erros que mais prejudica o SEO.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">Preciso manter o servidor antigo ativo depois da migração? <span class="fa-arr">+</span></button>
+      <div class="fa">Sim, por pelo menos 30 dias. Enquanto o Google ainda não reindexou todas as páginas nas novas URLs, manter o servidor antigo com os redirects 301 configurados garante que qualquer visita vinda de um link externo ou de uma busca ainda não atualizada chegue ao destino certo. Derrubar o servidor antigo antes disso pode gerar 404 em páginas que ainda não foram reindexadas.</div>
+    </div>
+    <div class="fi">
+      <button class="fq" onclick="faq(this)">O que fazer se o ranking cair depois da migração mesmo com todos os redirects corretos? <span class="fa-arr">+</span></button>
+      <div class="fa">Queda temporária de ranking nos primeiros 7 a 14 dias depois da migração é normal — o Google está processando as mudanças. Se a queda persistir além de 3 a 4 semanas, verifique: se todos os redirects estão respondendo com 301 (não 302 ou redirect chains), se o canonical das novas URLs aponta para si mesmo, se o robots.txt não está bloqueando rastreamento por engano, e se o sitemap submetido no Search Console contém as novas URLs. A maioria dos problemas persistentes de SEO pós-migração tem origem em uma dessas quatro causas.</div>
+    </div>
+  </div>
+</section>
+
+<div class="art-cta">
+  <div class="art-cta-box">
+    <h3>Vai migrar um site e não quer perder o ranking?</h3>
+    <p>Me chama antes de mexer em qualquer coisa. Com o checklist certo e a execução correta, a migração não precisa custar nada em SEO.</p>
+    <a href="mailto:contato@marcossanches.dev" class="btn-cta">Enviar um projeto ↗</a>
+  </div>
+</div>
+
+<div class="art-back">
+  <a href="index.html">← Voltar para o blog</a>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div>
+      <b>Marcos Sanches</b>
+      <small>Consultor de Tecnologia & Desenvolvedor · Guarulhos/SP</small>
+    </div>
+    <div class="links">
+      <a href="index.html">Blog</a>
+      <a href="../index.html#contato">Contato</a>
+    </div>
+    <small class="copy">© 2026</small>
+  </div>
+</footer>
+
+<script>
+function faq(btn){var i=btn.closest('.fi'),o=i.classList.contains('open');document.querySelectorAll('.fi').forEach(function(x){x.classList.remove('open')});if(!o)i.classList.add('open');}
+</script>
+</body>
+</html>
