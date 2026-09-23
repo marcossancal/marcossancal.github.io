@@ -1,16 +1,6 @@
 {
   "posts": [
     {
-      "slug": "como-automatizar-processos-empresariais-sem-contratar-mais",
-      "title": "Como automatizar processos da sua empresa sem contratar mais ninguém",
-      "excerpt": "A maioria das empresas que me procura tem um problema em comum: processos manuais que consomem tempo, geram erros e dependem de pessoas específicas para funcionar. Neste artigo explico como identificar o que automatizar primeiro — e o que isso muda na prática.",
-      "date": "2026-09-23",
-      "author": "Marcos Sanches",
-      "category": "Automação",
-      "image": "",
-      "readingTime": 7
-    },
-    {
       "slug": "integracao-de-sistemas-o-que-e-quando-preciso",
       "title": "Integração de sistemas: o que é, quando você precisa e por onde começar",
       "excerpt": "Sistemas que não conversam entre si são um dos maiores geradores de retrabalho em empresas de médio porte. Veja como funciona uma integração na prática — e como avaliar se vale a pena no seu caso.",
@@ -18,17 +8,159 @@
       "author": "Marcos Sanches",
       "category": "Integrações",
       "image": "",
-      "readingTime": 6
+      "readingTime": 6,
+      "_seo": {
+        "keyword_principal": "integração de sistemas para empresas",
+        "long_tail": "quando vale a pena integrar sistemas da empresa",
+        "intencao": "informacional → meio de funil",
+        "concorrencia": "média",
+        "por_que_ranqueia": "Termo com volume real e conteúdo fraco nos concorrentes (maioria é institucional, não educacional). Cases reais do Marcos (Arquivo Simples, automação jurídica) servem de âncora.",
+        "CTA_ideal": "Seus sistemas não conversam? Me manda uma mensagem descrevendo o problema."
+      }
     },
     {
-      "slug": "ia-aplicada-nos-negocios-o-que-funciona-de-verdade",
-      "title": "IA aplicada nos negócios: o que funciona de verdade (e o que é só hype)",
-      "excerpt": "Todo mundo fala de Inteligência Artificial, mas poucas empresas sabem o que dá resultado real. Aqui mostro os casos de uso que efetivamente economizam tempo e os que ainda não saíram do papel.",
-      "date": "2026-08-28",
+      "slug": "n8n-o-que-e-como-usar-para-automatizar-sua-empresa",
+      "title": "n8n: o que é e como usar para automatizar processos da sua empresa",
+      "excerpt": "O n8n é uma das ferramentas de automação mais poderosas disponíveis hoje — e pouco conhecida no Brasil. Veja para que serve, quando faz sentido usar e como ele se compara ao Zapier e ao Make.",
+      "date": "2026-09-18",
       "author": "Marcos Sanches",
-      "category": "IA Aplicada",
+      "category": "Automação",
       "image": "",
-      "readingTime": 8
+      "readingTime": 7,
+      "_seo": {
+        "keyword_principal": "n8n automação",
+        "long_tail": "n8n para automatizar processos de empresa como usar",
+        "intencao": "informacional com alta conversão — quem pesquisa n8n quer implementar",
+        "concorrencia": "baixa-média em PT-BR",
+        "por_que_ranqueia": "Poucos artigos bons em português sobre n8n. Marcos usa no dia a dia — autoridade real. DA 97 do github.io compensa a falta de backlinks no domínio próprio.",
+        "CTA_ideal": "Quer montar um fluxo n8n para o seu negócio? Me manda o processo que você quer automatizar."
+      }
+    },
+    {
+      "slug": "como-criar-um-mvp-sem-desperdicar-dinheiro",
+      "title": "Como criar um MVP sem desperdiçar dinheiro em funcionalidades que ninguém vai usar",
+      "excerpt": "A maioria dos MVPs falha antes de chegar ao mercado — não por falta de tecnologia, mas por falta de foco. Veja como definir o escopo mínimo, escolher a stack certa e sair do papel sem estourar o orçamento.",
+      "date": "2026-09-05",
+      "author": "Marcos Sanches",
+      "category": "Sistemas",
+      "image": "",
+      "readingTime": 8,
+      "_seo": {
+        "keyword_principal": "como criar MVP",
+        "long_tail": "como criar MVP para startup sem desperdiçar dinheiro",
+        "intencao": "informacional → alta conversão (quem pesquisa isso geralmente tem ideia e budget)",
+        "concorrencia": "média",
+        "por_que_ranqueia": "Público de empresários com ideia — exatamente o perfil-alvo do Marcos. Conteúdo prático com visão de quem já construiu produtos próprios (ZapFlow, Consulta RFB) tem credibilidade real.",
+        "CTA_ideal": "Tem uma ideia e quer entender quanto custa sair do papel? Me manda uma mensagem."
+      }
+    },
+    {
+      "slug": "quanto-custa-desenvolver-um-sistema-web-sob-medida",
+      "title": "Quanto custa desenvolver um sistema web sob medida? Entenda o que define o preço",
+      "excerpt": "Essa é a pergunta que mais recebo. A resposta honesta é: depende — mas dá para ter uma noção clara antes de pedir qualquer orçamento. Veja os fatores que mais pesam no valor de um sistema.",
+      "date": "2026-08-15",
+      "author": "Marcos Sanches",
+      "category": "Sistemas",
+      "image": "",
+      "readingTime": 6,
+      "_seo": {
+        "keyword_principal": "quanto custa desenvolver sistema web",
+        "long_tail": "quanto custa criar sistema web sob medida para empresa",
+        "intencao": "transacional — quem pesquisa isso está prestes a contratar",
+        "concorrencia": "média-baixa",
+        "por_que_ranqueia": "Intenção de compra altíssima. Poucos desenvolvedores escrevem sobre precificação com transparência. Artigo honesto e direto tem tudo para performar.",
+        "CTA_ideal": "Me conta o que você precisa construir e eu te dou uma estimativa sem compromisso."
+      }
+    },
+    {
+      "slug": "scraping-web-o-que-e-quando-usar-e-quando-evitar",
+      "title": "Web scraping: o que é, quando faz sentido usar e quando evitar",
+      "excerpt": "Scraping é uma das ferramentas mais úteis — e mais mal compreendidas — do kit de um desenvolvedor. Veja o que é possível fazer, os limites legais e técnicos, e em quais situações ele resolve um problema real.",
+      "date": "2026-08-10",
+      "author": "Marcos Sanches",
+      "category": "Automação",
+      "image": "",
+      "readingTime": 7,
+      "_seo": {
+        "keyword_principal": "web scraping para empresas",
+        "long_tail": "web scraping quando usar e como funciona para automatizar coleta de dados",
+        "intencao": "informacional com conversão lateral",
+        "concorrencia": "baixa em PT-BR com foco empresarial",
+        "por_que_ranqueia": "Case real: robô do eSAJ para advogados. Conteúdo com ângulo empresarial (não tutorial técnico) cobre um espaço que quase ninguém ocupa em português.",
+        "CTA_ideal": "Precisa coletar dados de algum lugar de forma automática? Me conta o contexto."
+      }
+    },
+    {
+      "slug": "migrar-site-wordpress-sem-perder-seo",
+      "title": "Como migrar um site WordPress sem perder o SEO que você construiu",
+      "excerpt": "Migração de site feita errado apaga anos de trabalho em SEO em questão de horas. Veja o checklist técnico completo: redirects, canonical, sitemap, Search Console e o que verificar depois da virada.",
+      "date": "2026-07-30",
+      "author": "Marcos Sanches",
+      "category": "SEO Técnico",
+      "image": "",
+      "readingTime": 8,
+      "_seo": {
+        "keyword_principal": "migrar site WordPress sem perder SEO",
+        "long_tail": "como migrar WordPress para outro servidor sem perder posicionamento no Google",
+        "intencao": "informacional com conversão — quem lê isso geralmente vai precisar de ajuda",
+        "concorrencia": "média",
+        "por_que_ranqueia": "Termo com volume real e ansiedade alta (medo de perder ranking). Checklist técnico detalhado supera a maioria dos artigos genéricos. Marcos faz migração como serviço.",
+        "CTA_ideal": "Vai migrar um site e tem medo de perder posicionamento? Me chama antes de mexer em qualquer coisa."
+      }
+    },
+    {
+      "slug": "consultor-de-tecnologia-o-que-faz-quando-contratar",
+      "title": "Consultor de tecnologia: o que faz, quando contratar e o que esperar do trabalho",
+      "excerpt": "Muita gente confunde consultor de tecnologia com freelancer de TI ou com gerente de projeto. São coisas diferentes. Veja o que um consultor de tecnologia realmente entrega — e quando faz sentido contratar um.",
+      "date": "2026-07-20",
+      "author": "Marcos Sanches",
+      "category": "Consultoria",
+      "image": "",
+      "readingTime": 6,
+      "_seo": {
+        "keyword_principal": "consultor de tecnologia",
+        "long_tail": "o que faz um consultor de tecnologia e quando contratar",
+        "intencao": "informacional → conversão direta",
+        "concorrencia": "média-baixa",
+        "por_que_ranqueia": "Palavra-chave do próprio posicionamento do Marcos. Artigo que define o serviço nos termos que o cliente usa — e termina com CTA de contato — é o mais próximo de 'me contrate' sem ser uma LP.",
+        "CTA_ideal": "Tem um problema de tecnologia sem saber exatamente o que precisa? É exatamente aí que eu entro."
+      }
+    },
+    {
+      "slug": "desenvolvedor-de-sistemas-em-guarulhos",
+      "title": "Desenvolvedor de sistemas em Guarulhos: o que considerar antes de contratar",
+      "excerpt": "Se você está procurando um desenvolvedor ou consultor de tecnologia em Guarulhos — seja para um sistema, uma automação ou um site — veja o que avaliar antes de fechar qualquer contrato.",
+      "date": "2026-07-10",
+      "author": "Marcos Sanches",
+      "category": "Consultoria",
+      "image": "",
+      "readingTime": 5,
+      "_seo": {
+        "keyword_principal": "desenvolvedor de sistemas em Guarulhos",
+        "long_tail": "contratar desenvolvedor de sistemas em Guarulhos SP",
+        "intencao": "transacional local — altíssima conversão",
+        "concorrencia": "baixa",
+        "por_que_ranqueia": "SEO local com concorrência quase zero. Quem pesquisa isso quer contratar. Marcos está em Guarulhos. Pode linkar SanCal e citar o portfólio — link building legítimo via DA 97.",
+        "CTA_ideal": "Estou em Guarulhos e atendo remotamente o Brasil inteiro. Me manda o que você precisa."
+      }
+    },
+    {
+      "slug": "como-automatizar-emissao-de-nfse-para-empresas",
+      "title": "Como automatizar a emissão de NFS-e para empresas com muitas notas por mês",
+      "excerpt": "Emitir centenas de notas fiscais de serviço manualmente é um dos maiores gargalos operacionais de escolas, clínicas e prestadoras de serviço. Veja como a automação resolve isso — e como fizemos na prática.",
+      "date": "2026-06-28",
+      "author": "Marcos Sanches",
+      "category": "Automação",
+      "image": "",
+      "readingTime": 6,
+      "_seo": {
+        "keyword_principal": "automatizar emissão NFS-e",
+        "long_tail": "como automatizar emissão de nota fiscal de serviço eletrônica em massa",
+        "intencao": "transacional — quem pesquisa isso tem dor real e budget para resolver",
+        "concorrencia": "muito baixa",
+        "por_que_ranqueia": "Case real: escola com 200+ alunos. Marcos construiu esse sistema. Ninguém mais no Brasil escreve sobre isso com case próprio. Long tail ultra-específica — potencial de ser o único resultado relevante.",
+        "CTA_ideal": "Emite muitas notas manualmente todo mês? Me conta como funciona o processo hoje."
+      }
     }
   ]
 }

@@ -188,7 +188,7 @@ a{
     display:grid;grid-template-columns:1.3fr .7fr;gap:10vw;margin:38px 0 100px
 }
 .display{
-    font-size:clamp(46px,76px,96px);line-height:.94;letter-spacing:-.065em;font-weight:800
+    font-size:clamp(46px,56px,96px);line-height:.94;letter-spacing:-.065em;font-weight:800
 }
 .display span{
     font-weight:400
